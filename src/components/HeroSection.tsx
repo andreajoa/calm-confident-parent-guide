@@ -45,12 +45,18 @@ const HeroSection = () => {
               </Button>
               
               <Button 
+                asChild
                 size="lg" 
                 variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold text-lg px-8 py-4"
-                onClick={() => document.getElementById('email-form')?.scrollIntoView({ behavior: 'smooth' })}
+                className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-primary font-semibold text-lg px-8 py-4"
               >
-                Download Free Sample Pages
+                <a 
+                  href="https://drive.google.com/file/d/1eKymrfq-9M8m_ZShRMLnAxhrXt4CRrHT/view?usp=sharing" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  Download Free Sample Pages
+                </a>
               </Button>
             </div>
 

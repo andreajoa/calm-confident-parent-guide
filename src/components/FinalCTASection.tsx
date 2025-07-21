@@ -52,16 +52,17 @@ const FinalCTASection = () => {
               </div>
 
               {/* Main CTA */}
-              <div className="space-y-4">
+              <div className="flex flex-col items-center justify-center space-y-4 w-full">
                 <Button 
                   asChild
                   size="lg"
-                  className="bg-white text-primary hover:bg-white/90 font-bold text-xl px-12 py-6 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  className="bg-white text-primary hover:bg-white/90 font-bold text-xl px-12 py-6 shadow-2xl transform hover:scale-105 transition-all duration-300 w-full max-w-md mx-auto"
                 >
                   <a 
                     href="https://neuropsychopedagogue.gumroad.com/l/spehk" 
                     target="_blank" 
                     rel="noopener noreferrer"
+                    className="flex items-center justify-center"
                   >
                     Download Now - $19.87
                   </a>

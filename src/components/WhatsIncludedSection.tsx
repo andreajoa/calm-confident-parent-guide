@@ -145,16 +145,17 @@ const WhatsIncludedSection = () => {
           </div>
 
           {/* CTA */}
-          <div className="mt-16 animate-fade-in-up">
+          <div className="mt-16 animate-fade-in-up flex justify-center">
             <Button 
               asChild
               size="lg"
-              className="btn-hero text-xl px-12 py-6"
+              className="btn-hero text-xl px-12 py-6 w-full max-w-md mx-auto"
             >
               <a 
                 href="https://neuropsychopedagogue.gumroad.com/l/spehk" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                className="flex items-center justify-center"
               >
                 Get Complete System - $19.87
               </a>

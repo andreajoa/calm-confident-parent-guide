@@ -10,6 +10,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import FinalCTASection from "@/components/FinalCTASection";
 import Footer from "@/components/Footer";
+import EmailCapturePopup from "@/components/EmailCapturePopup";
 
 const Index = () => {
   return (
@@ -26,6 +27,7 @@ const Index = () => {
       <FAQSection />
       <FinalCTASection />
       <Footer />
+      <EmailCapturePopup />
     </div>
   );
 };

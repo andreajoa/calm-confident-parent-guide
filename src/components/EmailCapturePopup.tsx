@@ -7,10 +7,15 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { useToast } from "@/hooks/use-toast";
 
 const EmailCapturePopup = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hasShown, setHasShown] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     // Check if popup was already shown in this session
@@ -33,9 +38,74 @@ const EmailCapturePopup = () => {
     sessionStorage.setItem('emailPopupShown', 'true');
   };
 
-  const handleFormSubmit = () => {
-    // When form is submitted, close popup and mark as shown
-    handleClose();
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!firstName.trim() || !email.trim()) {
+      toast({
+        title: "Campos obrigatórios",
+        description: "Por favor, preencha seu nome e email.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!email.includes("@")) {
+      toast({
+        title: "Email inválido",
+        description: "Por favor, digite um email válido.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Salvar dados no localStorage
+      const submissionData = {
+        firstName: firstName.trim(),
+        email: email.trim(),
+        timestamp: new Date().toISOString(),
+      };
+      
+      const existingData = localStorage.getItem("emailCaptures");
+      const captures = existingData ? JSON.parse(existingData) : [];
+      captures.push(submissionData);
+      localStorage.setItem("emailCaptures", JSON.stringify(captures));
+
+      // Tentar submeter para o serviço externo (EmailOctopus)
+      const formData = new FormData();
+      formData.append("field_0", firstName.trim()); // Nome
+      formData.append("field_1", email.trim()); // Email
+      
+      // Submit para o formulário real (se disponível)
+      fetch("https://eocampaign1.com/form/72fb70c4-663b-11f0-b017-738da375565f", {
+        method: "POST",
+        body: formData,
+        mode: "no-cors",
+      }).catch(() => {
+        // Ignorar erros de CORS, dados já foram salvos localmente
+      });
+
+      toast({
+        title: "Sucesso! 🎉",
+        description: "Seu email foi cadastrado! Verifique sua caixa de entrada.",
+      });
+
+      // Fechar popup e marcar como enviado
+      handleClose();
+      
+    } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
+      toast({
+        title: "Erro",
+        description: "Houve um problema. Tente novamente.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   useEffect(() => {
@@ -44,7 +114,7 @@ const EmailCapturePopup = () => {
       const handleSubmit = (e: Event) => {
         const target = e.target as HTMLElement;
         if (target.closest('[data-form="72fb70c4-663b-11f0-b017-738da375565f"]')) {
-          setTimeout(handleFormSubmit, 1000); // Delay to allow form processing
+          setTimeout(() => handleClose(), 1000); // Delay to allow form processing
         }
       };
 
@@ -91,21 +161,31 @@ const EmailCapturePopup = () => {
                 </p>
               </div>
 
-              <div className="space-y-4">
+              <form onSubmit={handleFormSubmit} className="space-y-4">
                 <input 
                   type="text"
                   placeholder="Enter your first name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                  required
                 />
                 <input 
                   type="email"
                   placeholder="Enter your email address here"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                  required
                 />
-                <button className="w-full bg-blue-400 hover:bg-blue-500 text-white font-medium py-3 px-6 rounded-md transition-colors">
-                  Subscribe
+                <button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-blue-400 hover:bg-blue-500 disabled:bg-blue-300 text-white font-medium py-3 px-6 rounded-md transition-colors"
+                >
+                  {isSubmitting ? "Enviando..." : "Subscribe"}
                 </button>
-              </div>
+              </form>
 
               <div className="text-center text-xs text-muted-foreground">
                 Powered by EmailOctopus

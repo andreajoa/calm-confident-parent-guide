@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ContactPopup from "@/components/ContactPopup";
 
 const Header = () => {
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
@@ -49,7 +51,7 @@ const Header = () => {
             Resources
           </button>
           <button 
-            onClick={() => scrollToSection('contact')}
+            onClick={() => setIsContactOpen(true)}
             className="text-foreground hover:text-primary transition-colors"
           >
             Contact
@@ -104,7 +106,10 @@ const Header = () => {
               Resources
             </button>
             <button 
-              onClick={() => scrollToSection('contact')}
+              onClick={() => {
+                setIsContactOpen(true);
+                setIsMenuOpen(false);
+              }}
               className="text-left text-foreground hover:text-primary transition-colors py-2"
             >
               Contact
@@ -124,6 +129,7 @@ const Header = () => {
           </nav>
         </div>
       )}
+      <ContactPopup isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </header>
   );
 };

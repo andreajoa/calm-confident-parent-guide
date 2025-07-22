@@ -21,7 +21,7 @@ const Header = () => {
           <img 
             src="/lovable-uploads/088e5682-630c-4d61-8ac4-712368b8222f.png" 
             alt="The Calm & Confident Parent Logo" 
-            className="h-12 w-auto md:h-14"
+            className="h-16 w-auto md:h-20"
           />
           <span className="font-bold text-xl md:text-2xl text-foreground hidden sm:block">
             The Calm & Confident Parent

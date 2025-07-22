@@ -43,8 +43,8 @@ const EmailCapturePopup = () => {
     
     if (!firstName.trim() || !email.trim()) {
       toast({
-        title: "Campos obrigatórios",
-        description: "Por favor, preencha seu nome e email.",
+        title: "Required Fields",
+        description: "Please fill in your name and email.",
         variant: "destructive",
       });
       return;
@@ -52,8 +52,8 @@ const EmailCapturePopup = () => {
 
     if (!email.includes("@")) {
       toast({
-        title: "Email inválido",
-        description: "Por favor, digite um email válido.",
+        title: "Invalid Email",
+        description: "Please enter a valid email address.",
         variant: "destructive",
       });
       return;
@@ -89,8 +89,8 @@ const EmailCapturePopup = () => {
       });
 
       toast({
-        title: "Sucesso! 🎉",
-        description: "Seu email foi cadastrado! Verifique sua caixa de entrada.",
+        title: "Thank You! 🎉",
+        description: "Your email has been successfully registered! Please check your inbox for your free guide sample.",
       });
 
       // Fechar popup e marcar como enviado
@@ -99,8 +99,8 @@ const EmailCapturePopup = () => {
     } catch (error) {
       console.error("Erro ao enviar formulário:", error);
       toast({
-        title: "Erro",
-        description: "Houve um problema. Tente novamente.",
+        title: "Error",
+        description: "Something went wrong. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -183,7 +183,7 @@ const EmailCapturePopup = () => {
                   disabled={isSubmitting}
                   className="w-full bg-blue-400 hover:bg-blue-500 disabled:bg-blue-300 text-white font-medium py-3 px-6 rounded-md transition-colors"
                 >
-                  {isSubmitting ? "Enviando..." : "Subscribe"}
+                  {isSubmitting ? "Subscribing..." : "Subscribe"}
                 </button>
               </form>
 

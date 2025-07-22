@@ -55,27 +55,75 @@ const EmailCapturePopup = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-md p-0 overflow-hidden border-0 bg-white">
-        <div className="relative bg-gradient-to-br from-primary/10 to-primary/5 p-6">
+      <DialogContent className="sm:max-w-2xl p-0 overflow-hidden border-0 bg-white">
+        <div className="relative bg-white p-8">
           <Button
             variant="ghost"
             size="icon"
-            className="absolute right-2 top-2 h-8 w-8 text-muted-foreground hover:text-foreground"
+            className="absolute right-4 top-4 h-8 w-8 text-muted-foreground hover:text-foreground"
             onClick={handleClose}
           >
             <X className="h-4 w-4" />
           </Button>
           
-          <DialogHeader className="space-y-3 text-center">
-            <DialogTitle className="text-xl font-bold text-foreground">
-              🎁 Receba Conteúdo Exclusivo!
-            </DialogTitle>
-            <p className="text-sm text-muted-foreground">
-              Cadastre-se para receber dicas exclusivas sobre parentalidade consciente
-            </p>
-          </DialogHeader>
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* Left side - Form */}
+            <div className="space-y-6">
+              <div className="text-center space-y-3">
+                <h2 className="text-2xl font-bold text-foreground">
+                  Want a Sneak Peek<br />
+                  of the Guide? 🎁
+                </h2>
+                <div className="text-sm text-muted-foreground space-y-1">
+                  <p><strong>Get 12 FREE pages</strong> from <em>The Calm & Confident Parent</em> guide — packed with real scripts, visual tools, and proven techniques to bring more peace to your home today.</p>
+                </div>
+                <div className="flex items-center justify-center gap-2 text-xs text-blue-600">
+                  <span>📧 Instant download</span>
+                </div>
+                <div className="flex items-center justify-center gap-2 text-xs text-green-600">
+                  <span>✅ No spam, ever</span>
+                </div>
+                <p className="text-xs text-muted-foreground italic">
+                  Created by a certified neuropsychopedagogue
+                </p>
+                <p className="text-sm font-medium text-foreground">
+                  Enter your email to get the free sample now!
+                </p>
+              </div>
 
-          <div className="mt-6 bg-white rounded-lg p-4 shadow-sm border">
+              <div className="space-y-4">
+                <input 
+                  type="text"
+                  placeholder="Enter your first name"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                />
+                <input 
+                  type="email"
+                  placeholder="Enter your email address here"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                />
+                <button className="w-full bg-blue-400 hover:bg-blue-500 text-white font-medium py-3 px-6 rounded-md transition-colors">
+                  Subscribe
+                </button>
+              </div>
+
+              <div className="text-center text-xs text-muted-foreground">
+                Powered by EmailOctopus
+              </div>
+            </div>
+
+            {/* Right side - Guide Image */}
+            <div className="flex justify-center">
+              <img 
+                src="/lovable-uploads/c00b81f9-2afc-4533-90ce-e9bd5a348900.png" 
+                alt="The Calm & Confident Parent Guide"
+                className="max-w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+
+          {/* Hidden form container for the actual script */}
+          <div className="hidden">
             <div 
               id="email-capture-form"
               dangerouslySetInnerHTML={{

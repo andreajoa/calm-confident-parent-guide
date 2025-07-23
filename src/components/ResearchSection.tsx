@@ -6,7 +6,7 @@ const ResearchSection = () => {
       name: "CHADD",
       description: "Children and Adults with ADHD",
       url: "https://chadd.org",
-      logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200&h=100&fit=crop&crop=center"
+      logo: "/lovable-uploads/f09d319e-95a4-4e4a-a767-bf6d3d2d3709.png"
     },
     {
       name: "Understood.org",

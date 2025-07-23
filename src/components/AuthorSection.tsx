@@ -54,13 +54,13 @@ const AuthorSection = () => {
 
             <div className="space-y-6 text-lg text-muted-foreground">
               <p>
-                <strong className="text-foreground">Certified Neuropsychopedagogue</strong> with 20+ years of experience working directly with families facing the daily challenges of ADHD and autism.
+                <strong className="text-foreground">Certified Neuropsychopedagogue with over 20 years of hands-on experience helping families navigate the challenges of ADHD and autism.</strong>
               </p>
               <p>
-                Currently serving the <strong className="text-foreground">State Government of São Paulo, Brazil</strong>, Margareth has dedicated her career to developing practical, evidence-based strategies that actually work in real homes with real families.
+                Margareth has personally guided and supported thousands of families in transforming their daily routines using simple, effective, and proven strategies. Her methods are not theoretical—they've been tested and refined inside real homes, with real children, over two decades.
               </p>
               <p>
-                <strong className="text-foreground">Thousands of families</strong> have transformed their daily routines using her battle-tested methods. This guide contains her most effective strategies, refined over two decades of hands-on experience.
+                This guide brings together her most powerful tools, built from years of real-world problem-solving and deep psychological insight. If you're looking for clarity, confidence, and practical results, you're in the right place.
               </p>
             </div>
 

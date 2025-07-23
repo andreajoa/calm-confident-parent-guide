@@ -84,34 +84,34 @@ const ContactPopup = ({ isOpen, onClose }: ContactPopupProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md p-0 overflow-hidden border-0 bg-white">
-        <div className="relative bg-white p-6">
+      <DialogContent className="w-[95vw] max-w-md mx-auto p-0 overflow-hidden border-0 bg-white max-h-[90vh] overflow-y-auto">
+        <div className="relative bg-white p-4 sm:p-6">
           <Button
             variant="ghost"
             size="icon"
-            className="absolute right-2 top-2 h-8 w-8 text-muted-foreground hover:text-foreground"
+            className="absolute right-2 top-2 h-10 w-10 sm:h-8 sm:w-8 text-muted-foreground hover:text-foreground z-10 touch-manipulation"
             onClick={onClose}
           >
-            <X className="h-4 w-4" />
+            <X className="h-5 w-5 sm:h-4 sm:w-4" />
           </Button>
           
-          <DialogHeader className="space-y-3 text-center mb-6">
+          <DialogHeader className="space-y-3 text-center mb-4 sm:mb-6 pr-8">
             <div className="flex justify-center">
-              <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center">
-                <Mail className="h-6 w-6 text-primary" />
+              <div className="h-10 w-10 sm:h-12 sm:w-12 bg-primary/10 rounded-full flex items-center justify-center">
+                <Mail className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
               </div>
             </div>
-            <DialogTitle className="text-xl font-bold text-foreground">
+            <DialogTitle className="text-lg sm:text-xl font-bold text-foreground">
               Get in Touch
             </DialogTitle>
-            <p className="text-sm text-muted-foreground max-w-sm mx-auto">
+            <p className="text-xs sm:text-sm text-muted-foreground max-w-sm mx-auto px-2">
               If you'd like to contact Margareth Almeida about anything, feel free to send your questions. I'll be happy to help!
             </p>
           </DialogHeader>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-xs sm:text-sm font-medium text-foreground mb-1 sm:mb-2">
                 Your Name
               </label>
               <input 
@@ -119,13 +119,13 @@ const ContactPopup = ({ isOpen, onClose }: ContactPopupProps) => {
                 placeholder="Enter your full name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm sm:text-base"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-xs sm:text-sm font-medium text-foreground mb-1 sm:mb-2">
                 Email Address
               </label>
               <input 
@@ -133,21 +133,21 @@ const ContactPopup = ({ isOpen, onClose }: ContactPopupProps) => {
                 placeholder="Enter your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm sm:text-base"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-xs sm:text-sm font-medium text-foreground mb-1 sm:mb-2">
                 Message
               </label>
               <textarea 
                 placeholder="Tell us what you'd like to discuss or ask about..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                rows={4}
-                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none resize-none"
+                rows={3}
+                className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none resize-none text-sm sm:text-base sm:rows-4"
                 required
               />
             </div>
@@ -155,7 +155,7 @@ const ContactPopup = ({ isOpen, onClose }: ContactPopupProps) => {
             <button 
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-primary hover:bg-primary/90 disabled:bg-primary/50 text-white font-medium py-3 px-6 rounded-md transition-colors"
+              className="w-full bg-primary hover:bg-primary/90 disabled:bg-primary/50 text-white font-medium py-2.5 sm:py-3 px-4 sm:px-6 rounded-md transition-colors text-sm sm:text-base touch-manipulation"
             >
               {isSubmitting ? "Sending Message..." : "Send Message"}
             </button>

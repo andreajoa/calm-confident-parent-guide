@@ -56,7 +56,7 @@ const ResearchSection = () => {
                   <img 
                     src={authority.logo} 
                     alt={`${authority.name} logo`}
-                    className="w-full h-20 object-cover rounded-lg"
+                    className="w-full h-16 sm:h-20 md:h-24 object-contain rounded-lg bg-white/5"
                   />
                   <div className="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <ExternalLink className="h-6 w-6 text-primary" />

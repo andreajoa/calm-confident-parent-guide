@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle } from "lucide-react";
+import ContactPopup from "./ContactPopup";
 
 const FAQSection = () => {
+  const [isContactPopupOpen, setIsContactPopupOpen] = useState(false);
+
   const faqs = [
     {
       question: "Will this work if I've already tried everything?",
@@ -46,66 +50,73 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center space-y-4 mb-12 animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-              Frequently Asked <span className="text-primary">Questions</span>
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              Get answers to common concerns and make an informed decision for your family.
-            </p>
-          </div>
+    <>
+      <section className="py-16 md:py-24 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center space-y-4 mb-12 animate-fade-in-up">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+                Frequently Asked <span className="text-primary">Questions</span>
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Get answers to common concerns and make an informed decision for your family.
+              </p>
+            </div>
 
-          <Accordion type="single" collapsible className="space-y-4 animate-fade-in-up">
-            {faqs.map((faq, index) => (
-              <AccordionItem 
-                key={index} 
-                value={`item-${index}`}
-                className="card-elevated px-6 border-none"
-              >
-                <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary py-6">
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                    <span>{faq.question}</span>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-6 ml-8">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+            <Accordion type="single" collapsible className="space-y-4 animate-fade-in-up">
+              {faqs.map((faq, index) => (
+                <AccordionItem 
+                  key={index} 
+                  value={`item-${index}`}
+                  className="card-elevated px-6 border-none"
+                >
+                  <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary py-6">
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                      <span>{faq.question}</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 ml-8">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
 
-          {/* Additional Support */}
-          <div className="mt-12 text-center bg-primary/5 p-8 rounded-xl border border-primary/20 animate-fade-in-up">
-            <h3 className="text-xl font-semibold text-foreground mb-4">
-              Still Have Questions?
-            </h3>
-            <p className="text-muted-foreground mb-6">
-              We're here to help! Get personalized answers to your specific situation.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="mailto:tdahma2@gmail.com"
-                className="btn-secondary inline-flex items-center justify-center"
-              >
-                Email Us Directly
-              </a>
-              <a 
-                href="https://neuropsychopedagogue.gumroad.com/l/spehk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-hero inline-flex items-center justify-center"
-              >
-                Get Started Now - $19.87
-              </a>
+            {/* Additional Support */}
+            <div className="mt-12 text-center bg-primary/5 p-8 rounded-xl border border-primary/20 animate-fade-in-up">
+              <h3 className="text-xl font-semibold text-foreground mb-4">
+                Still Have Questions?
+              </h3>
+              <p className="text-muted-foreground mb-6">
+                We're here to help! Get personalized answers to your specific situation.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button 
+                  onClick={() => setIsContactPopupOpen(true)}
+                  className="btn-secondary inline-flex items-center justify-center"
+                >
+                  Email Us Directly
+                </button>
+                <a 
+                  href="https://neuropsychopedagogue.gumroad.com/l/spehk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-hero inline-flex items-center justify-center"
+                >
+                  Get Started Now - $19.87
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <ContactPopup 
+        isOpen={isContactPopupOpen}
+        onClose={() => setIsContactPopupOpen(false)}
+      />
+    </>
   );
 };
 

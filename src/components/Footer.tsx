@@ -1,6 +1,10 @@
 import { ExternalLink, Mail, ArrowUp } from "lucide-react";
+import { useState } from "react";
+import PodcastPopup from "./PodcastPopup";
 
 const Footer = () => {
+  const [isPodcastPopupOpen, setIsPodcastPopupOpen] = useState(false);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -103,7 +107,12 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-lg">Coming Soon</h4>
             <div className="space-y-2 text-sm text-white/70">
-              <p>🎙️ Weekly Podcast Series</p>
+              <button 
+                onClick={() => setIsPodcastPopupOpen(true)}
+                className="text-left hover:text-white transition-colors cursor-pointer"
+              >
+                🎙️ Weekly Podcast Series
+              </button>
               <p>👥 Monthly Support Groups</p>
               <p>📱 Mobile App</p>
               <p>🎯 Advanced Workshops</p>
@@ -155,6 +164,11 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+      <PodcastPopup 
+        isOpen={isPodcastPopupOpen} 
+        onClose={() => setIsPodcastPopupOpen(false)} 
+      />
     </footer>
   );
 };

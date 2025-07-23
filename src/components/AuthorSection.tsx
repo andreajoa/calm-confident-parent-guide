@@ -10,7 +10,7 @@ const AuthorSection = () => {
     {
       icon: Award,
       title: "Government Certified",
-      description: "Certified Neuropsychopedagogue serving the State Government of São Paulo, Brazil"
+      description: "Government-Certified Neuropsychopedagogue with extensive experience supporting families and educational systems in complex behavioral and learning challenges."
     },
     {
       icon: Users,

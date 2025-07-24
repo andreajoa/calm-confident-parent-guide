@@ -123,8 +123,8 @@ const EmailCapturePopup = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-2xl p-0 overflow-hidden border-0 bg-white">
-        <div className="relative bg-white p-8">
+      <DialogContent className="max-w-[95vw] sm:max-w-lg md:max-w-xl lg:max-w-2xl max-h-[90vh] p-0 overflow-hidden border-0 bg-white">
+        <div className="relative bg-white p-4 sm:p-6 md:p-8 overflow-y-auto max-h-[90vh]">
           <Button
             variant="ghost"
             size="icon"
@@ -135,11 +135,11 @@ const EmailCapturePopup = () => {
             <X className="h-5 w-5" />
           </Button>
           
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
             {/* Left side - Form */}
-            <div className="space-y-6">
-              <div className="text-center space-y-3">
-                <h2 className="text-2xl font-bold text-foreground">
+            <div className="space-y-4 sm:space-y-6">
+              <div className="text-center space-y-2 sm:space-y-3">
+                <h2 className="text-xl sm:text-2xl font-bold text-foreground">
                   Want a Sneak Peek<br />
                   of the Guide? 🎁
                 </h2>
@@ -199,11 +199,11 @@ const EmailCapturePopup = () => {
             </div>
 
             {/* Right side - Guide Image */}
-            <div className="flex justify-center">
+            <div className="flex justify-center md:order-last order-first">
               <img 
                 src="/lovable-uploads/c00b81f9-2afc-4533-90ce-e9bd5a348900.png" 
                 alt="The Calm & Confident Parent Guide"
-                className="max-w-full h-auto rounded-lg shadow-lg"
+                className="w-full max-w-[200px] sm:max-w-[250px] md:max-w-full h-auto rounded-lg shadow-lg"
               />
             </div>
           </div>

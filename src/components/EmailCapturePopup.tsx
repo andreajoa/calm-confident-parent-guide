@@ -41,21 +41,19 @@ const EmailCapturePopup = () => {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!firstName.trim() || !email.trim()) {
-      toast({
-        title: "Required Fields",
-        description: "Please fill in your name and email.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (!email.includes("@")) {
+    // Only validate email format if email is provided
+    if (email.trim() && !email.includes("@")) {
       toast({
         title: "Invalid Email",
         description: "Please enter a valid email address.",
         variant: "destructive",
       });
+      return;
+    }
+
+    // Allow submission even with empty fields
+    if (!firstName.trim() && !email.trim()) {
+      handleClose();
       return;
     }
 
@@ -130,10 +128,11 @@ const EmailCapturePopup = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="absolute right-4 top-4 h-8 w-8 text-muted-foreground hover:text-foreground"
+            className="absolute right-4 top-4 h-10 w-10 text-muted-foreground hover:text-foreground hover:bg-gray-100 z-10"
             onClick={handleClose}
+            title="Close popup"
           >
-            <X className="h-4 w-4" />
+            <X className="h-5 w-5" />
           </Button>
           
           <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -164,27 +163,34 @@ const EmailCapturePopup = () => {
               <form onSubmit={handleFormSubmit} className="space-y-4">
                 <input 
                   type="text"
-                  placeholder="Enter your first name"
+                  placeholder="Enter your first name (optional)"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
-                  required
                 />
                 <input 
                   type="email"
-                  placeholder="Enter your email address here"
+                  placeholder="Enter your email address here (optional)"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
-                  required
                 />
-                <button 
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-blue-400 hover:bg-blue-500 disabled:bg-blue-300 text-white font-medium py-3 px-6 rounded-md transition-colors"
-                >
-                  {isSubmitting ? "Subscribing..." : "Subscribe"}
-                </button>
+                <div className="space-y-2">
+                  <button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-blue-400 hover:bg-blue-500 disabled:bg-blue-300 text-white font-medium py-3 px-6 rounded-md transition-colors"
+                  >
+                    {isSubmitting ? "Subscribing..." : "Get Free Sample"}
+                  </button>
+                  <button 
+                    type="button"
+                    onClick={handleClose}
+                    className="w-full text-muted-foreground hover:text-foreground text-sm py-2 underline transition-colors"
+                  >
+                    No thanks, close this popup
+                  </button>
+                </div>
               </form>
 
               <div className="text-center text-xs text-muted-foreground">

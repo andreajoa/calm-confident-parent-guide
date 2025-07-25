@@ -42,7 +42,7 @@ const Podcasts = () => {
             <Link to="/">
               <Button variant="ghost" size="sm" className="flex items-center space-x-2">
                 <ArrowLeft className="h-4 w-4" />
-                <span>Voltar ao site</span>
+                <span>Back to site</span>
               </Button>
             </Link>
             <div className="flex items-center space-x-2">
@@ -57,11 +57,11 @@ const Podcasts = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8 text-center">
           <h2 className="text-3xl font-bold text-foreground mb-4">
-            Episódios Publicados
+            Published Episodes
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Ouça nossos episódios sobre estratégias práticas para famílias com TDAH e autismo. 
-            Cada episódio oferece insights valiosos e ferramentas para criar um ambiente mais calmo e confiante.
+            Listen to our episodes about practical strategies for ADHD and autism families. 
+            Each episode offers valuable insights and tools to create a calmer and more confident environment.
           </p>
         </div>
 
@@ -75,7 +75,7 @@ const Podcasts = () => {
                       <Headphones className="h-5 w-5 text-primary" />
                     </div>
                     <span className="text-sm text-muted-foreground">
-                      Episódio {index + 1}
+                      Episode {index + 1}
                     </span>
                   </div>
                 </div>
@@ -89,13 +89,13 @@ const Podcasts = () => {
                 </p>
                 <div className="space-y-3">
                   <p className="text-xs text-muted-foreground">
-                    Publicado em {new Date(episode.publishDate).toLocaleDateString('pt-BR')}
+                    Published on {new Date(episode.publishDate).toLocaleDateString('en-US')}
                   </p>
                   <Button 
                     onClick={() => handleListenClick(episode.spotifyUrl)}
                     className="w-full bg-[#1DB954] hover:bg-[#1DB954]/90 text-white flex items-center justify-center space-x-2"
                   >
-                    <span>Ouvir no Spotify</span>
+                    <span>Listen on Spotify</span>
                     <ExternalLink className="h-4 w-4" />
                   </Button>
                 </div>
@@ -109,10 +109,10 @@ const Podcasts = () => {
           <div className="max-w-md mx-auto p-6 border border-dashed border-muted-foreground/30 rounded-lg">
             <Headphones className="h-12 w-12 text-muted-foreground/50 mx-auto mb-4" />
             <h3 className="font-semibold text-foreground mb-2">
-              Mais episódios em breve
+              More episodes coming soon
             </h3>
             <p className="text-sm text-muted-foreground">
-              Novos episódios são publicados regularmente. Volte em breve para descobrir mais conteúdo.
+              New episodes are published regularly. Check back soon for more content.
             </p>
           </div>
         </div>

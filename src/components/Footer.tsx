@@ -1,5 +1,6 @@
 import { ExternalLink, Mail, ArrowUp } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import PodcastPopup from "./PodcastPopup";
 
 const Footer = () => {
@@ -130,7 +131,7 @@ const Footer = () => {
               © 2024 Margareth Almeida. All rights reserved.
             </div>
             
-            <div className="flex items-center space-x-6 text-sm">
+            <div className="flex flex-wrap items-center justify-center md:justify-end gap-4 md:gap-6 text-sm">
               <a 
                 href="https://neuropsychopedagogue.gumroad.com/l/spehk" 
                 target="_blank" 
@@ -139,6 +140,12 @@ const Footer = () => {
               >
                 Purchase Guide
               </a>
+              <Link 
+                to="/return-policy"
+                className="text-white/70 hover:text-white transition-colors"
+              >
+                Return Policy
+              </Link>
               <a 
                 href="mailto:tdahma2@gmail.com" 
                 className="text-white/70 hover:text-white transition-colors"

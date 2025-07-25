@@ -2,6 +2,7 @@ import { Headphones, ExternalLink, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import PodcastSEO from "@/components/PodcastSEO";
 
 interface PodcastEpisode {
   id: string;
@@ -34,7 +35,14 @@ const Podcasts = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <PodcastSEO />
+      <div className="min-h-screen bg-background">
+        {/* SEO Headers */}
+        <header style={{ display: 'none' }}>
+          <h1>The Calm & Confident Parent - Podcast Episodes</h1>
+          <p>Expert advice and practical strategies for ADHD and autism families by Margareth Almeida</p>
+        </header>
       {/* Header */}
       <div className="border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/95">
         <div className="container mx-auto px-4 py-4">
@@ -118,6 +126,7 @@ const Podcasts = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

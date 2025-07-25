@@ -30,4 +30,20 @@
         </image:image>
     </url>
 
+    <!-- Podcasts Page -->
+    <url>
+        <loc>https://www.adhdautism.online/podcasts</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Return Policy Page -->
+    <url>
+        <loc>https://www.adhdautism.online/return-policy</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
 </urlset>

@@ -51,6 +51,14 @@ const Header = () => {
           >
             Podcasts
           </Link>
+          <a 
+            href="https://medium.com/@tdahma2"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground hover:text-primary transition-colors"
+          >
+            Blog
+          </a>
           <button 
             onClick={() => scrollToSection('resources')}
             className="text-foreground hover:text-primary transition-colors"
@@ -113,6 +121,15 @@ const Header = () => {
             >
               Podcasts
             </Link>
+            <a 
+              href="https://medium.com/@tdahma2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-left text-foreground hover:text-primary transition-colors py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Blog
+            </a>
             <button 
               onClick={() => scrollToSection('resources')}
               className="text-left text-foreground hover:text-primary transition-colors py-2"

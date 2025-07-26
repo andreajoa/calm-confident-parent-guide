@@ -82,6 +82,14 @@ const Footer = () => {
               >
                 Podcasts
               </Link>
+              <a 
+                href="https://medium.com/@tdahma2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/70 hover:text-white transition-colors text-left"
+              >
+                Blog
+              </a>
               <button 
                 onClick={() => scrollToSection('contact')}
                 className="text-white/70 hover:text-white transition-colors text-left"
@@ -144,6 +152,14 @@ const Footer = () => {
               >
                 Podcasts
               </Link>
+              <a 
+                href="https://medium.com/@tdahma2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/70 hover:text-white transition-colors"
+              >
+                Blog
+              </a>
               <a 
                 href="https://neuropsychopedagogue.gumroad.com/l/spehk" 
                 target="_blank" 

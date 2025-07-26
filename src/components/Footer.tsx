@@ -76,6 +76,12 @@ const Footer = () => {
               >
                 Free Resources
               </button>
+              <Link 
+                to="/podcasts"
+                className="text-white/70 hover:text-white transition-colors text-left"
+              >
+                Podcasts
+              </Link>
               <button 
                 onClick={() => scrollToSection('contact')}
                 className="text-white/70 hover:text-white transition-colors text-left"
@@ -132,6 +138,12 @@ const Footer = () => {
             </div>
             
             <div className="flex flex-wrap items-center justify-center md:justify-end gap-4 md:gap-6 text-sm">
+              <Link 
+                to="/podcasts"
+                className="text-white/70 hover:text-white transition-colors"
+              >
+                Podcasts
+              </Link>
               <a 
                 href="https://neuropsychopedagogue.gumroad.com/l/spehk" 
                 target="_blank" 

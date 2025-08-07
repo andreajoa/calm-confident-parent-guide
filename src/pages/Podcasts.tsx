@@ -26,6 +26,20 @@ const podcastEpisodes: PodcastEpisode[] = [
     description: "Practical approaches to create a peaceful home environment for neurodivergent children.",
     spotifyUrl: "https://open.spotify.com/episode/6qGbnyxZ6cShILYczh7yYv?si=nUumVwmLQhqalZrd9Y3_Vw",
     publishDate: "2024-01-22"
+  },
+  {
+    id: "3",
+    title: "Building Emotional Regulation Skills in Neurodivergent Children",
+    description: "Expert techniques for helping children develop emotional self-regulation and coping strategies.",
+    spotifyUrl: "https://open.spotify.com/episode/6tbucIr4IhG656BmZp8zfh?si=sF72X9FYTv-exBjDOiO1nw",
+    publishDate: "2024-01-29"
+  },
+  {
+    id: "4",
+    title: "Creating Supportive Learning Environments at Home and School",
+    description: "Practical tips for setting up spaces and routines that support neurodivergent children's learning.",
+    spotifyUrl: "https://open.spotify.com/episode/4r3k47zGNqTmmnCkGlRc0N?si=g7ELi7VFQbS5O68prwaU8w",
+    publishDate: "2024-02-05"
   }
 ];
 

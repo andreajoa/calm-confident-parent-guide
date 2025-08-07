@@ -254,7 +254,7 @@ const ScreeningAssessment = () => {
                   
                   <Button
                     onClick={nextQuestion}
-                    disabled={!answers[currentQuestion.id]}
+                    disabled={answers[currentQuestion.id] === undefined}
                   >
                     {currentQuestionIndex === screeningQuestions.length - 1 ? 'View Results' : 'Next'}
                     <ArrowRight className="ml-2 h-4 w-4" />

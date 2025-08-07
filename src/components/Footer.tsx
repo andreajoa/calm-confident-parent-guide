@@ -128,12 +128,6 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-lg">Coming Soon</h4>
             <div className="space-y-2 text-sm text-white/70">
-              <button 
-                onClick={() => setIsPodcastPopupOpen(true)}
-                className="text-left hover:text-white transition-colors cursor-pointer"
-              >
-                🎙️ Weekly Podcast Series
-              </button>
               <p>👥 Monthly Support Groups</p>
               <p>📱 Mobile App</p>
               <p>🎯 Advanced Workshops</p>

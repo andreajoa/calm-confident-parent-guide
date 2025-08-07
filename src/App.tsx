@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import ReturnPolicy from "./pages/ReturnPolicy";
 import Podcasts from "./pages/Podcasts";
+import ScreeningAssessment from "./pages/ScreeningAssessment";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/return-policy" element={<ReturnPolicy />} />
           <Route path="/podcasts" element={<Podcasts />} />
+          <Route path="/screening-assessment" element={<ScreeningAssessment />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

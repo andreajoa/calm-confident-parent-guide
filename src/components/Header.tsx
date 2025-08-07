@@ -45,20 +45,26 @@ const Header = () => {
           >
             Guide
           </button>
-          <Link 
-            to="/podcasts"
-            className="text-foreground hover:text-primary transition-colors"
-          >
-            Podcasts
-          </Link>
-          <a 
-            href="https://medium.com/@tdahma2"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-foreground hover:text-primary transition-colors"
-          >
-            Blog
-          </a>
+           <Link 
+             to="/podcasts"
+             className="text-foreground hover:text-primary transition-colors"
+           >
+             Podcasts
+           </Link>
+           <Link 
+             to="/screening-assessment"
+             className="text-foreground hover:text-primary transition-colors"
+           >
+             Assessment
+           </Link>
+           <a 
+             href="https://medium.com/@tdahma2"
+             target="_blank"
+             rel="noopener noreferrer"
+             className="text-foreground hover:text-primary transition-colors"
+           >
+             Blog
+           </a>
           <button 
             onClick={() => scrollToSection('resources')}
             className="text-foreground hover:text-primary transition-colors"
@@ -114,22 +120,29 @@ const Header = () => {
             >
               Guide
             </button>
-            <Link 
-              to="/podcasts"
-              className="text-left text-foreground hover:text-primary transition-colors py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Podcasts
-            </Link>
-            <a 
-              href="https://medium.com/@tdahma2"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-left text-foreground hover:text-primary transition-colors py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Blog
-            </a>
+             <Link 
+               to="/podcasts"
+               className="text-left text-foreground hover:text-primary transition-colors py-2"
+               onClick={() => setIsMenuOpen(false)}
+             >
+               Podcasts
+             </Link>
+             <Link 
+               to="/screening-assessment"
+               className="text-left text-foreground hover:text-primary transition-colors py-2"
+               onClick={() => setIsMenuOpen(false)}
+             >
+               Assessment
+             </Link>
+             <a 
+               href="https://medium.com/@tdahma2"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="text-left text-foreground hover:text-primary transition-colors py-2"
+               onClick={() => setIsMenuOpen(false)}
+             >
+               Blog
+             </a>
             <button 
               onClick={() => scrollToSection('resources')}
               className="text-left text-foreground hover:text-primary transition-colors py-2"

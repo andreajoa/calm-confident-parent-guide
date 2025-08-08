@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
@@ -102,8 +103,16 @@ const ScreeningAssessment = () => {
     return (
       <div className="min-h-screen bg-background">
         <div className="container mx-auto px-4 py-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="mb-6">
+                <Button variant="ghost" asChild>
+                  <Link to="/">
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    Voltar ao Início
+                  </Link>
+                </Button>
+              </div>
+              <div className="text-center mb-8">
               <h1 className="text-4xl font-bold text-foreground mb-4">
                 Neurodevelopmental Screening Assessment
               </h1>
@@ -190,6 +199,14 @@ const ScreeningAssessment = () => {
       <div className="min-h-screen bg-background">
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-3xl mx-auto">
+            <div className="mb-6">
+              <Button variant="ghost" asChild>
+                <Link to="/">
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Voltar ao Início
+                </Link>
+              </Button>
+            </div>
             <div className="mb-8">
               <div className="flex justify-between items-center mb-4">
                 <h1 className="text-2xl font-bold">Assessment Questions</h1>
@@ -272,6 +289,14 @@ const ScreeningAssessment = () => {
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
+          <div className="mb-6">
+            <Button variant="ghost" asChild>
+              <Link to="/">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Voltar ao Início
+              </Link>
+            </Button>
+          </div>
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-foreground mb-4">
               Assessment Results

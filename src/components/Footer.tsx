@@ -46,10 +46,10 @@ const Footer = () => {
             <div className="flex items-center space-x-2 text-sm">
               <Mail className="h-4 w-4" />
               <a 
-                href="mailto:tdahma2@gmail.com" 
+                href="mailto:info@adhdautism.online" 
                 className="text-white/70 hover:text-white transition-colors"
               >
-                tdahma2@gmail.com
+                info@adhdautism.online
               </a>
             </div>
           </div>
@@ -181,7 +181,7 @@ const Footer = () => {
                 Return Policy
               </Link>
               <a 
-                href="mailto:tdahma2@gmail.com" 
+                href="mailto:info@adhdautism.online" 
                 className="text-white/70 hover:text-white transition-colors"
               >
                 Support

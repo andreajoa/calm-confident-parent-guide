@@ -116,6 +116,7 @@ const ContactPopup = ({ isOpen, onClose }: ContactPopupProps) => {
               </label>
               <input 
                 type="text"
+                name="name"
                 placeholder="Enter your full name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -130,6 +131,7 @@ const ContactPopup = ({ isOpen, onClose }: ContactPopupProps) => {
               </label>
               <input 
                 type="email"
+                name="email"
                 placeholder="Enter your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -143,6 +145,7 @@ const ContactPopup = ({ isOpen, onClose }: ContactPopupProps) => {
                 Message
               </label>
               <textarea 
+                name="message"
                 placeholder="Tell us what you'd like to discuss or ask about..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}

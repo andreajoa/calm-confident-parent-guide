@@ -103,5 +103,79 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      (function() {
+        function toObject(form) {
+          var fd = new FormData(form);
+          var data = {};
+          fd.forEach(function(value, key) {
+            if (data[key] !== undefined) {
+              if (!Array.isArray(data[key])) data[key] = [data[key]];
+              data[key].push(value);
+            } else {
+              data[key] = value;
+            }
+          });
+          var emailEl = form.querySelector('input[type="email"]');
+          if (emailEl && !data.email) data.email = emailEl.value;
+          var phoneEl = form.querySelector('input[type="tel"], input[name*="phone" i], input[name*="telefone" i], input[name*="fone" i]');
+          if (phoneEl && !data.phone && !data.telefone) data.phone = phoneEl.value;
+          var nameEl = form.querySelector('input[name*="name" i], input[name*="nome" i], input[placeholder*="name" i], input[placeholder*="nome" i]');
+          if (nameEl && !data.name && !data.nome) data.name = nameEl.value;
+          var messageEl = form.querySelector('textarea, [contenteditable="true"]');
+          if (messageEl && !data.message && !data.mensagem) data.message = (messageEl.value || messageEl.textContent || '').trim();
+          return data;
+        }
+
+        function post(url, payload) {
+          try {
+            fetch(url, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+              keepalive: true,
+            }).catch(function(){});
+          } catch(e) {}
+        }
+
+        document.addEventListener('submit', function(e) {
+          var form = e.target;
+          if (!(form instanceof HTMLFormElement)) return;
+          var payload = toObject(form);
+          payload.timestamp = new Date().toISOString();
+          payload.source = 'lovable_website';
+          payload.page_url = window.location.href;
+          payload.form_identifier = form.id || form.getAttribute('name') || form.className || 'unknown_form';
+          post('http://localhost:5000/collect-form', payload);
+        });
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+          if (!(target instanceof Element)) return;
+          if (target.matches('button[type="submit"], input[type="submit"]')) {
+            var form = target.closest('form');
+            var root = form || document;
+            var emailInput = root.querySelector('input[type="email"]');
+            if (emailInput && emailInput.value) {
+              post('http://localhost:5000/collect-email', {
+                email: emailInput.value,
+                timestamp: new Date().toISOString(),
+                source: 'popup',
+                page_url: window.location.href
+              });
+            }
+            var phoneInput = root.querySelector('input[type="tel"], input[name*="phone" i], input[name*="telefone" i], input[name*="fone" i]');
+            if (phoneInput && phoneInput.value) {
+              post('http://localhost:5000/collect-phone', {
+                phone: phoneInput.value,
+                timestamp: new Date().toISOString(),
+                source: 'popup',
+                page_url: window.location.href
+              });
+            }
+          }
+        });
+      })();
+    </script>
   </body>
 </html>

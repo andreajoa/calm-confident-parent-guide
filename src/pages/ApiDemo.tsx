@@ -3,23 +3,33 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+import Spinner from "@/components/ui/spinner";
+import { Skeleton } from "@/components/ui/skeleton";
 import { useApiHealth, useProdutos, useCategorias, useBuscar } from "@/hooks/useApi";
 import { useMemo, useState } from "react";
+import { CheckCircle2, Cloud, CloudOff, RefreshCw } from "lucide-react";
+import { fetchHealth, fetchProdutos as svcProdutos, fetchCategorias as svcCategorias } from "@/lib/api/services";
 
 const SourceBadge = ({ source }: { source: "api" | "local" }) => (
   <Badge variant={source === "api" ? "default" : "outline"}>
-    Fonte: {source === "api" ? "API" : "Local"}
+    Fonte: {source === "api" ? "API" : "Local"} {source === "api" && <CheckCircle2 className="inline ml-1 text-success" size={14} />}
   </Badge>
 );
 
 export default function ApiDemo() {
-  const { data: health } = useApiHealth();
-  const { data: produtos } = useProdutos();
-  const { data: categorias } = useCategorias();
+  const { data: health, isFetching: fetchingHealth } = useApiHealth();
+  const [forceLocal, setForceLocal] = useState(false);
+  const { data: produtos, isLoading: loadingProdutos, isFetching: fetchingProdutos } = useProdutos({ forceLocal });
+  const { data: categorias, isLoading: loadingCategorias, isFetching: fetchingCategorias } = useCategorias({ forceLocal });
   const [term, setTerm] = useState("a");
-  const { data: busca } = useBuscar(term);
+  const { data: busca, isLoading: loadingBusca, isFetching: fetchingBusca } = useBuscar(term, { forceLocal });
 
   const online = health?.online;
+
+  const [timings, setTimings] = useState<Record<string, number>>({});
 
   const produtosList = useMemo(() => produtos?.data || [], [produtos]);
   const categoriasList = useMemo(() => categorias?.data || [], [categorias]);
@@ -35,8 +45,24 @@ export default function ApiDemo() {
 
       <header className="space-y-2">
         <h1 className="text-3xl font-bold tracking-tight">Demonstração da API</h1>
-        <p className="text-muted-foreground">Status: {online ? "Online" : "Offline"}</p>
+        <p className="text-muted-foreground flex items-center gap-2">
+          Status: {online ? (
+            <span className="inline-flex items-center gap-1 text-success"><Cloud size={16} /> Online</span>
+          ) : (
+            <span className="inline-flex items-center gap-1 text-destructive"><CloudOff size={16} /> Offline</span>
+          )}
+          {fetchingHealth && <Spinner size={14} />}
+        </p>
       </header>
+
+      {!online && (
+        <Alert className="max-w-3xl">
+          <AlertTitle>Usando dados locais</AlertTitle>
+          <AlertDescription>
+            A API parece estar offline. Algumas informações podem não estar atualizadas.
+          </AlertDescription>
+        </Alert>
+      )}
 
       <section className="grid md:grid-cols-2 gap-6">
         <Card>
@@ -45,7 +71,14 @@ export default function ApiDemo() {
             {produtos && <SourceBadge source={produtos.source} />}
           </CardHeader>
           <CardContent>
-            {Array.isArray(produtosList) && produtosList.length > 0 ? (
+            {(loadingProdutos || fetchingProdutos) ? (
+              <div className="space-y-2">
+                <div className="flex items-center gap-2"><Spinner /><span className="text-sm text-muted-foreground">Carregando produtos...</span></div>
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-5/6" />
+                <Skeleton className="h-4 w-4/6" />
+              </div>
+            ) : Array.isArray(produtosList) && produtosList.length > 0 ? (
               <ul className="list-disc pl-5 space-y-1">
                 {produtosList.map((p: any, idx: number) => (
                   <li key={p.id ?? idx} className="text-sm">
@@ -65,7 +98,14 @@ export default function ApiDemo() {
             {categorias && <SourceBadge source={categorias.source} />}
           </CardHeader>
           <CardContent>
-            {Array.isArray(categoriasList) && categoriasList.length > 0 ? (
+            {(loadingCategorias || fetchingCategorias) ? (
+              <div className="space-y-2">
+                <div className="flex items-center gap-2"><Spinner /><span className="text-sm text-muted-foreground">Carregando categorias...</span></div>
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-5/6" />
+                <Skeleton className="h-4 w-4/6" />
+              </div>
+            ) : Array.isArray(categoriasList) && categoriasList.length > 0 ? (
               <ul className="list-disc pl-5 space-y-1">
                 {categoriasList.map((c: any, idx: number) => (
                   <li key={c.id ?? idx} className="text-sm">
@@ -87,9 +127,12 @@ export default function ApiDemo() {
             {busca && <SourceBadge source={busca.source} />}
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2 items-center">
               <Input value={term} onChange={(e) => setTerm(e.target.value)} placeholder="Termo de busca" />
-              <Button type="button" onClick={() => { /* react-query atualiza automaticamente pelo key */ }}>Buscar</Button>
+              <Button type="button" onClick={() => { /* react-query atualiza pelo key */ }}>
+                Buscar
+              </Button>
+              {(loadingBusca || fetchingBusca) && <Spinner />}
             </div>
             {Array.isArray(buscaList) && buscaList.length > 0 ? (
               <ul className="list-disc pl-5 space-y-1">
@@ -102,6 +145,46 @@ export default function ApiDemo() {
             ) : (
               <p className="text-sm text-muted-foreground">Sem resultados.</p>
             )}
+          </CardContent>
+        </Card>
+      </section>
+
+      <section className="space-y-4">
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-xl">Ferramentas de Teste</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <div className="flex flex-wrap gap-2 items-center">
+              <Button type="button" variant="secondary" onClick={async () => {
+                const t0 = performance.now();
+                await fetchHealth();
+                const t1 = performance.now();
+                setTimings((prev) => ({ ...prev, health: Math.round(t1 - t0) }));
+              }}>
+                <RefreshCw className="mr-2 h-4 w-4" /> Testar /api/health {timings.health != null && <span className="ml-2 text-muted-foreground">{timings.health} ms</span>}
+              </Button>
+              <Button type="button" variant="secondary" onClick={async () => {
+                const t0 = performance.now();
+                await svcProdutos();
+                const t1 = performance.now();
+                setTimings((prev) => ({ ...prev, produtos: Math.round(t1 - t0) }));
+              }}>
+                <RefreshCw className="mr-2 h-4 w-4" /> Testar /api/produtos {timings.produtos != null && <span className="ml-2 text-muted-foreground">{timings.produtos} ms</span>}
+              </Button>
+              <Button type="button" variant="secondary" onClick={async () => {
+                const t0 = performance.now();
+                await svcCategorias();
+                const t1 = performance.now();
+                setTimings((prev) => ({ ...prev, categorias: Math.round(t1 - t0) }));
+              }}>
+                <RefreshCw className="mr-2 h-4 w-4" /> Testar /api/categorias {timings.categorias != null && <span className="ml-2 text-muted-foreground">{timings.categorias} ms</span>}
+              </Button>
+            </div>
+            <div className="flex items-center gap-2">
+              <Switch id="forceLocal" checked={forceLocal} onCheckedChange={setForceLocal} />
+              <Label htmlFor="forceLocal">Forçar usar dados locais (testar fallback)</Label>
+            </div>
           </CardContent>
         </Card>
       </section>

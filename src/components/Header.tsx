@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import ContactPopup from "@/components/ContactPopup";
+import ConnectionStatus from "@/components/ConnectionStatus";
 
 const Header = () => {
   const [isContactOpen, setIsContactOpen] = useState(false);

@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ApiConnectionWatcher from "@/components/ApiConnectionWatcher";
 import Index from "./pages/Index";
 import ReturnPolicy from "./pages/ReturnPolicy";
 import Podcasts from "./pages/Podcasts";
@@ -17,6 +18,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <ApiConnectionWatcher />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

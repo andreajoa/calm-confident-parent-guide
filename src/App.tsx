@@ -8,6 +8,7 @@ import ReturnPolicy from "./pages/ReturnPolicy";
 import Podcasts from "./pages/Podcasts";
 import ScreeningAssessment from "./pages/ScreeningAssessment";
 import NotFound from "./pages/NotFound";
+import ApiDemo from "./pages/ApiDemo";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/return-policy" element={<ReturnPolicy />} />
           <Route path="/podcasts" element={<Podcasts />} />
           <Route path="/screening-assessment" element={<ScreeningAssessment />} />
+          <Route path="/api-demo" element={<ApiDemo />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -121,11 +121,11 @@ All colors MUST be HSL.
 
 @layer components {
   .btn-hero {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 shadow-[var(--shadow-soft)] transition-[var(--transition-smooth)] font-semibold px-8 py-4 rounded-lg text-lg;
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 shadow-soft transition-smooth font-semibold px-8 py-4 rounded-lg text-lg;
   }
 
   .btn-secondary {
-    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-[var(--shadow-soft)] transition-[var(--transition-smooth)] font-semibold px-6 py-3 rounded-lg;
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-soft transition-smooth font-semibold px-6 py-3 rounded-lg;
   }
 
   .hero-gradient {
@@ -137,7 +137,7 @@ All colors MUST be HSL.
   }
 
   .card-elevated {
-    @apply bg-card border border-border rounded-xl shadow-[var(--shadow-soft)] transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-strong)];
+    @apply bg-card border border-border rounded-xl shadow-soft transition-smooth hover:shadow-strong;
   }
 
   .text-balance {
@@ -154,6 +154,10 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-strong { box-shadow: var(--shadow-strong); }
+  .transition-smooth { transition: var(--transition-smooth); }
+
   @keyframes fade-in-up {
     from {
       opacity: 0;

@@ -24,13 +24,14 @@ function sanitizeBaseUrl(url: string) {
 }
 
 export function getApiBaseUrl(): string {
-  // Priority: window override > query param > localStorage > defaults by env
+  // Priority: window override > query param > localStorage > VITE env > defaults by env
   const fromWindow = window.__API_BASE_URL__;
   const fromQuery = new URLSearchParams(window.location.search).get("apiBase");
   const fromStorage = localStorage.getItem("API_BASE_URL") || undefined;
+  const fromEnv = (import.meta as any).env?.VITE_API_BASE_URL as string | undefined;
   const fallback = DEFAULTS[detectEnv()];
 
-  return sanitizeBaseUrl(fromWindow || fromQuery || fromStorage || fallback);
+  return sanitizeBaseUrl(fromWindow || fromQuery || fromStorage || fromEnv || fallback);
 }
 
 export function isApiOnlineFlagStorageKey() {

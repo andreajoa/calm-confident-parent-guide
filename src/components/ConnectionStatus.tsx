@@ -19,7 +19,7 @@ export default function ConnectionStatus({ className }: { className?: string }) 
       {online ? (
         <span className="inline-flex items-center gap-1"><Cloud size={14} /> Online</span>
       ) : (
-        <span className="inline-flex items-center gap-1"><CloudOff size={14} /> Offline</span>
+        <span className="inline-flex items-center gap-1"><CloudOff size={14} /> Modo offline</span>
       )}
     </Badge>
   );

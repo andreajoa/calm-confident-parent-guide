@@ -19,3 +19,7 @@ export async function fetchHealth() {
 export async function fetchBuscar(q: string) {
   return apiGet<any>("/api/buscar", { params: { q } });
 }
+
+export async function fetchSeoMeta(params: { title?: string; description?: string }) {
+  return apiGet<any>("/api/seo/meta", { params });
+}

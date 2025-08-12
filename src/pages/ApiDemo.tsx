@@ -11,7 +11,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useApiHealth, useProdutos, useCategorias, useBuscar } from "@/hooks/useApi";
 import { useMemo, useState } from "react";
 import { CheckCircle2, Cloud, CloudOff, RefreshCw } from "lucide-react";
-import { fetchHealth, fetchProdutos as svcProdutos, fetchCategorias as svcCategorias } from "@/lib/api/services";
+import { fetchHealth, fetchProdutos as svcProdutos, fetchCategorias as svcCategorias, fetchSeoMeta } from "@/lib/api/services";
 
 const SourceBadge = ({ source }: { source: "api" | "local" }) => (
   <Badge variant={source === "api" ? "default" : "outline"}>
@@ -179,6 +179,14 @@ export default function ApiDemo() {
                 setTimings((prev) => ({ ...prev, categorias: Math.round(t1 - t0) }));
               }}>
                 <RefreshCw className="mr-2 h-4 w-4" /> Testar /api/categorias {timings.categorias != null && <span className="ml-2 text-muted-foreground">{timings.categorias} ms</span>}
+              </Button>
+              <Button type="button" variant="secondary" onClick={async () => {
+                const t0 = performance.now();
+                await fetchSeoMeta({ title: 'ADHD & Autism Help for Parents', description: 'Guidance and tools for parents' });
+                const t1 = performance.now();
+                setTimings((prev) => ({ ...prev, seo: Math.round(t1 - t0) }));
+              }}>
+                <RefreshCw className="mr-2 h-4 w-4" /> Testar /api/seo/meta {timings.seo != null && <span className="ml-2 text-muted-foreground">{timings.seo} ms</span>}
               </Button>
             </div>
             <div className="flex items-center gap-2">

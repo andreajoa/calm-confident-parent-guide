@@ -4,10 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import ContactPopup from "@/components/ContactPopup";
 import ConnectionStatus from "@/components/ConnectionStatus";
+import { useApiHealth } from "@/hooks/useApi";
 
 const Header = () => {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { data: health } = useApiHealth();
+  const online = !!health?.online;
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -80,8 +83,9 @@ const Header = () => {
           </button>
         </nav>
 
-        {/* CTA Button */}
+        {/* CTA + Status */}
         <div className="flex items-center space-x-4">
+          <ConnectionStatus className="hidden md:inline-flex" />
           <Button 
             asChild
             className="btn-hero hidden sm:inline-flex"
@@ -104,6 +108,14 @@ const Header = () => {
           </button>
         </div>
       </div>
+
+      {!online && (
+        <div className="bg-muted text-muted-foreground text-sm">
+          <div className="container mx-auto px-4 py-2">
+            Usando dados locais — algumas informações podem não estar atualizadas.
+          </div>
+        </div>
+      )}
 
       {/* Mobile Menu */}
       {isMenuOpen && (

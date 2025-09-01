@@ -109,13 +109,6 @@ const Header = () => {
         </div>
       </div>
 
-      {!online && (
-        <div className="bg-muted text-muted-foreground text-sm">
-          <div className="container mx-auto px-4 py-2">
-            Usando dados locais — algumas informações podem não estar atualizadas.
-          </div>
-        </div>
-      )}
 
       {/* Mobile Menu */}
       {isMenuOpen && (

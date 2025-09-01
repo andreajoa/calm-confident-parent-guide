@@ -152,12 +152,12 @@ const WhatsIncludedSection = () => {
               className="btn-hero text-xl px-12 py-6 w-full max-w-md mx-auto"
             >
               <a 
-                href="https://neuropsychopedagogue.gumroad.com/l/spehk" 
+                href="https://adhdautism.gumroad.com/l/spehk" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center justify-center"
               >
-                Get Complete System - $19.87
+                Get Complete System - $14.74
               </a>
             </Button>
           </div>

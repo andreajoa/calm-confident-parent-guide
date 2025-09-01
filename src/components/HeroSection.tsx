@@ -36,11 +36,11 @@ const HeroSection = () => {
                 className="bg-white text-primary hover:bg-white/90 font-bold text-lg px-8 py-4 shadow-xl"
               >
                 <a 
-                  href="https://neuropsychopedagogue.gumroad.com/l/spehk" 
+                  href="https://adhdautism.gumroad.com/l/spehk" 
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
-                  Get Instant Access - $19.87
+                  Get Instant Access - $14.74
                 </a>
               </Button>
               

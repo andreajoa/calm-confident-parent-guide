@@ -90,11 +90,11 @@ const Header = () => {
             className="btn-hero hidden sm:inline-flex"
           >
             <a 
-              href="https://neuropsychopedagogue.gumroad.com/l/spehk" 
+              href="https://adhdautism.gumroad.com/l/spehk" 
               target="_blank" 
               rel="noopener noreferrer"
             >
-              Get Guide - $19.87
+              Get Guide - $14.74
             </a>
           </Button>
 
@@ -168,11 +168,11 @@ const Header = () => {
               className="btn-hero w-full mt-4"
             >
               <a 
-                href="https://neuropsychopedagogue.gumroad.com/l/spehk" 
+                href="https://adhdautism.gumroad.com/l/spehk" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                Get Guide - $19.87
+                Get Guide - $14.74
               </a>
             </Button>
           </nav>

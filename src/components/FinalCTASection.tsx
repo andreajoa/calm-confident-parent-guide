@@ -31,7 +31,7 @@ const FinalCTASection = () => {
               {/* Price */}
               <div className="space-y-4">
                 <div className="text-5xl md:text-6xl font-bold text-yellow-200">
-                  $19.87
+                  $14.74
                 </div>
                 <p className="text-lg text-white/80">
                   One-time payment • No hidden fees • Instant access
@@ -59,12 +59,12 @@ const FinalCTASection = () => {
                   className="bg-white text-primary hover:bg-white/90 font-bold text-xl px-12 py-6 shadow-2xl transform hover:scale-105 transition-all duration-300 w-full max-w-md mx-auto"
                 >
                   <a 
-                    href="https://neuropsychopedagogue.gumroad.com/l/spehk" 
+                    href="https://adhdautism.gumroad.com/l/spehk" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center justify-center"
                   >
-                    Download Now - $19.87
+                    Download Now - $14.74
                   </a>
                 </Button>
                 

@@ -167,7 +167,7 @@ const Footer = () => {
                  Blog
                </a>
               <a 
-                href="https://neuropsychopedagogue.gumroad.com/l/spehk" 
+                href="https://adhdautism.gumroad.com/l/spehk"
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-white/70 hover:text-white transition-colors"

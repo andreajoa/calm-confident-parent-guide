@@ -99,12 +99,12 @@ const FAQSection = () => {
                   Email Us Directly
                 </button>
                 <a 
-                  href="https://neuropsychopedagogue.gumroad.com/l/spehk"
+                  href="https://adhdautism.gumroad.com/l/spehk"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-hero inline-flex items-center justify-center"
                 >
-                  Get Started Now - $19.87
+                  Get Started Now - $14.74
                 </a>
               </div>
             </div>

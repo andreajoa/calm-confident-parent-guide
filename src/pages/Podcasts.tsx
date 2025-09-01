@@ -40,6 +40,13 @@ const podcastEpisodes: PodcastEpisode[] = [
     description: "Practical tips for setting up spaces and routines that support neurodivergent children's learning.",
     spotifyUrl: "https://open.spotify.com/episode/4r3k47zGNqTmmnCkGlRc0N?si=g7ELi7VFQbS5O68prwaU8w",
     publishDate: "2024-02-05"
+  },
+  {
+    id: "5",
+    title: "Channel 4's \"Do You Have ADHD?\" Documentary: Breaking Down Barriers and Myths Around ADHD Diagnosis",
+    description: "An in-depth discussion about Channel 4's groundbreaking documentary, addressing common misconceptions and barriers surrounding ADHD diagnosis and awareness.",
+    spotifyUrl: "https://open.spotify.com/episode/2TBjfr4X2Q2ADYnNWw04VO",
+    publishDate: "2024-02-12"
   }
 ];
 

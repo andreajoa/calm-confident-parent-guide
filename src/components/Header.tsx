@@ -85,7 +85,6 @@ const Header = () => {
 
         {/* CTA + Status */}
         <div className="flex items-center space-x-4">
-          <ConnectionStatus className="hidden md:inline-flex" />
           <Button 
             asChild
             className="btn-hero hidden sm:inline-flex"

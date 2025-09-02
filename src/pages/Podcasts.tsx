@@ -47,6 +47,13 @@ const podcastEpisodes: PodcastEpisode[] = [
     description: "An in-depth discussion about Channel 4's groundbreaking documentary, addressing common misconceptions and barriers surrounding ADHD diagnosis and awareness.",
     spotifyUrl: "https://open.spotify.com/episode/2TBjfr4X2Q2ADYnNWw04VO",
     publishDate: "2024-02-12"
+  },
+  {
+    id: "6",
+    title: "Understanding How Sensory Processing Shapes Art Preferences in Autism: Why This Research Matters for Creating Inclusive Spaces",
+    description: "Exploring groundbreaking research on how sensory processing differences in autism influence art preferences and the importance of creating sensory-friendly environments.",
+    spotifyUrl: "https://open.spotify.com/episode/3590wrvGJh8i84GIoJY5Rh",
+    publishDate: "2024-02-19"
   }
 ];
 

@@ -146,7 +146,7 @@ const HeroSection = () => {
                 transition={{ delay: 0.4 }}
                 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight"
               >
-                You're Not <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-cyan-400">Failing.</span>
+                You're Not Failing Your Child—
               </motion.h1>
               <motion.h2 
                 initial={{ opacity: 0, y: 20 }}
@@ -154,7 +154,7 @@ const HeroSection = () => {
                 transition={{ delay: 0.6 }}
                 className="text-3xl md:text-4xl lg:text-6xl font-bold leading-tight"
               >
-                Your Child Isn't <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Broken.</span>
+                You Just Need the Right Roadmap
               </motion.h2>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -166,14 +166,14 @@ const HeroSection = () => {
               </motion.p>
             </div>
 
-            {/* Subheadline - Hormozi Style */}
+            {/* Subheadline - Blueprint */}
             <motion.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
               className="text-lg md:text-xl text-gray-300 leading-relaxed"
             >
-              Join <span className="text-cyan-400 font-bold">2,000+ parents</span> who transformed daily chaos into calm, confident parenting—without therapy, medication changes, or complicated programs.
+              178 Pages of Expert Strategies + <span className="text-cyan-400 font-bold">$400 Worth of Professional Parenting Tools</span> — Usually $497, Today Just <span className="text-green-400 font-bold">$47</span>.
             </motion.p>
 
             {/* Trust Bar - Inline Proof */}
@@ -219,7 +219,7 @@ const HeroSection = () => {
               className="flex flex-wrap items-center gap-4 text-sm bg-green-500/20 border border-green-500/50 rounded-lg p-3"
             >
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              <span className="font-semibold">{viewingCount} people viewing now</span>
+              <span className="font-semibold">🔥 847 parents got this guide in the last 7 days</span>
               <span className="hidden md:inline text-gray-400">•</span>
               <div className="hidden md:flex items-center gap-2">
                 <TrendingUp className="w-4 h-4 text-green-400" />
@@ -227,7 +227,7 @@ const HeroSection = () => {
               </div>
             </motion.div>
 
-            {/* CTA Stack - RED Primary Button */}
+            {/* CTA Stack - GREEN Primary Button */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -238,10 +238,11 @@ const HeroSection = () => {
                 onClick={handleCTAClick}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full md:w-auto btn-cta-primary text-lg md:text-xl px-8 md:px-12 py-6 flex items-center justify-center gap-2 group"
+                className="w-full md:w-auto text-lg md:text-xl px-8 md:px-12 py-6 flex items-center justify-center gap-2 group rounded-lg font-bold bg-[#10b981] hover:bg-[#0e9f6e] text-white shadow-2xl"
+                style={{ boxShadow: '0 0 40px rgba(16,185,129,0.55)' }}
               >
                 <Sparkles className="w-5 h-5 group-hover:rotate-180 transition-transform duration-300" />
-                Get Your System - $14.74
+                YES! I WANT THE COMPLETE GUIDE + BONUSES - $47
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
               

@@ -5,6 +5,7 @@ import HeroSection from "@/components/HeroSection";
 import LiveSocialProof from "@/components/LiveSocialProof";
 import ProblemSection from "@/components/ProblemSection";
 import AuthorSection from "@/components/AuthorSection";
+import AuthorityProofSection from "@/components/AuthorityProofSection";
 import LazySection from "@/components/LazySection";
 import AdSenseBanner from "@/components/AdSenseBanner";
 import AdSenseInline from "@/components/AdSenseInline";
@@ -42,10 +43,12 @@ const Index = () => {
       </LazySection>
       
       {/* SECTION 3: Authority Proof */}
-      <AuthorSection />
+      <AuthorityProofSection />
       
       {/* SECTION 4: Problem Agitation */}
       <ProblemSection />
+      {/* (Keep Author bio later for credibility stacking) */}
+      <AuthorSection />
       
       {/* AdSense Inline - Hidden if no ad loads */}
       <LazySection>

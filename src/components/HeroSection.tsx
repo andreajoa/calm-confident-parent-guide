@@ -307,6 +307,8 @@ const HeroSection = () => {
                 src="/lovable-uploads/c00b81f9-2afc-4533-90ce-e9bd5a348900.png" 
                 alt="The Calm & Confident Parent Book Cover" 
                 className="w-full max-w-md mx-auto drop-shadow-2xl rounded-lg"
+                loading="lazy"
+                decoding="async"
               />
               
               {/* Floating badges */}

@@ -13,4 +13,9 @@ Allow: /
 User-agent: *
 Allow: /
 
+# Sitemaps for each region (when implemented)
 Sitemap: https://www.adhdautism.online/sitemap.xml
+Sitemap: https://www.adhdautism.online/sitemap-us.xml
+Sitemap: https://www.adhdautism.online/sitemap-ca.xml
+Sitemap: https://www.adhdautism.online/sitemap-uk.xml
+Sitemap: https://www.adhdautism.online/sitemap-au.xml

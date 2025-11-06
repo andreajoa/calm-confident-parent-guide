@@ -1,4 +1,4 @@
-import { CheckCircle, Clock, Shield, Download } from "lucide-react";
+import { CheckCircle, Clock, Shield, Download, ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const FinalCTASection = () => {
@@ -7,13 +7,13 @@ const FinalCTASection = () => {
     "178 Pages + 15 Printables", 
     "Use Forever, Print Anytime",
     "No Subscription Required",
-    "30-Day Guarantee",
+    "30-Day Money-Back Guarantee",
     "Created by Certified Specialist"
   ];
 
   return (
-    <section className="py-16 md:py-24 hero-gradient text-white overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section className="py-16 md:py-24 px-4 hero-gradient text-white overflow-hidden relative">
+      <div className="container mx-auto">
         <div className="max-w-4xl mx-auto text-center space-y-12">
           <div className="space-y-6 animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-balance">
@@ -23,6 +23,16 @@ const FinalCTASection = () => {
             <p className="text-xl md:text-2xl text-white/90 text-balance">
               Join 2,000+ parents who've found their peace and transformed their family's daily experience.
             </p>
+          </div>
+
+          {/* Social Proof */}
+          <div className="flex items-center justify-center gap-2 text-lg">
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+              ))}
+            </div>
+            <span className="font-semibold">4.9/5 from 2,000+ families</span>
           </div>
 
           {/* Price and Benefits */}
@@ -56,19 +66,20 @@ const FinalCTASection = () => {
                 <Button 
                   asChild
                   size="lg"
-                  className="bg-white text-primary hover:bg-white/90 font-bold text-xl px-12 py-6 shadow-2xl transform hover:scale-105 transition-all duration-300 w-full max-w-md mx-auto"
+                  className="w-full max-w-md mx-auto bg-white text-primary hover:bg-white/90 font-bold text-xl px-12 py-6 rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group"
                 >
                   <a 
                     href="https://adhdautism.gumroad.com/l/spehk" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center"
+                    className="flex items-center justify-center gap-2"
                   >
                     Download Now - $14.74
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </Button>
                 
-                <div className="flex items-center justify-center space-x-4 text-sm text-white/70">
+                <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-white/70">
                   <div className="flex items-center space-x-1">
                     <Shield className="h-4 w-4" />
                     <span>30-Day Guarantee</span>
@@ -85,23 +96,6 @@ const FinalCTASection = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* Alternative CTA for Non-Buyers */}
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 animate-fade-in-up">
-            <h3 className="text-xl font-semibold mb-4 text-white">
-              Still exploring? Get free tools first:
-            </h3>
-            <p className="text-white/80 mb-6">
-              Not ready to purchase? Start with our free sample pages and see the quality for yourself.
-            </p>
-            <div id="final-email-form" className="max-w-md mx-auto">
-              <script 
-                async 
-                src="https://eocampaign1.com/form/72fb70c4-663b-11f0-b017-738da375565f.js" 
-                data-form="72fb70c4-663b-11f0-b017-738da375565f"
-              ></script>
             </div>
           </div>
 

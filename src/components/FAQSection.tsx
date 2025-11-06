@@ -107,7 +107,7 @@ const FAQSection = () => {
                   rel="noopener noreferrer"
                   className="bg-gradient-to-r from-pink-500 to-orange-500 text-white hover:from-orange-500 hover:to-pink-500 font-bold px-6 py-3 rounded-full shadow-lg hover:shadow-pink-500/50 transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center"
                 >
-                  Get Started Now - $14.74
+                  Get Started Now - $47
                 </a>
               </div>
             </div>

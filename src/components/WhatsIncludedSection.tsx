@@ -167,7 +167,7 @@ const WhatsIncludedSection = () => {
                 className="flex items-center justify-center gap-2"
               >
                 <Sparkles className="w-5 h-5" />
-                Get Complete System - $14.74
+                Get Complete System - $47
               </a>
             </Button>
           </div>

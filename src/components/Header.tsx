@@ -106,7 +106,7 @@ const Header = () => {
               className="flex items-center gap-2"
             >
               <Sparkles className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
-              Get Guide - $14.74
+              Get Guide - $47
             </a>
           </Button>
 
@@ -178,7 +178,7 @@ const Header = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                Get Guide - $14.74
+                Get Guide - $47
               </a>
             </Button>
           </nav>

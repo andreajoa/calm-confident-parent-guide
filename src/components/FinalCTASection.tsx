@@ -41,7 +41,7 @@ const FinalCTASection = () => {
               {/* Price */}
               <div className="space-y-4">
                 <div className="text-5xl md:text-6xl font-bold text-yellow-200">
-                  $14.74
+                  $47
                 </div>
                 <p className="text-lg text-white/80">
                   One-time payment • No hidden fees • Instant access
@@ -74,7 +74,7 @@ const FinalCTASection = () => {
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2"
                   >
-                    Download Now - $14.74
+                    Download Now - $47
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </Button>

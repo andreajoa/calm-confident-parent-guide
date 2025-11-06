@@ -30,24 +30,20 @@ const Index = () => {
       <HeroSection />
       <LiveSocialProof />
       
-      {/* AdSense Banner - After hero section - Only show if not breaking layout */}
+      {/* AdSense Banner - After hero section - Hidden if no ad loads */}
       <LazySection>
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <AdSenseBanner 
-            format="horizontal"
-            className="w-full"
-          />
-        </div>
+        <AdSenseBanner
+          format="horizontal"
+          className="w-full"
+        />
       </LazySection>
       
       <ProblemSection />
       <AuthorSection />
       
-      {/* AdSense Inline - Between content sections - Only show if not breaking layout */}
+      {/* AdSense Inline - Between content sections - Hidden if no ad loads */}
       <LazySection>
-        <div className="max-w-7xl mx-auto px-4">
-          <AdSenseInline className="w-full" />
-        </div>
+        <AdSenseInline className="w-full" />
       </LazySection>
       
       <Suspense fallback={<div className="min-h-[400px]" />}>

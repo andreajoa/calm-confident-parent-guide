@@ -4,61 +4,93 @@ import { CheckCircle2, BookOpen, FileText, Video, Mail, Infinity, Sparkles } fro
 const ValueStackSection = () => {
   const valueStack = [
     {
+      section: "CORE GUIDE",
       icon: BookOpen,
-      item: "Complete 178-Page Guide",
+      item: "A Daily Guide to Help Your Child with ADHD and Autism Thrive",
       value: 97,
       details: [
-        "Morning routines that work",
-        "Meltdown prevention scripts",
-        "School accommodation templates",
-        "Sensory regulation tools"
+        "178 pages of transformational content",
+        "16 comprehensive chapters",
+        "Written by expert with lived experience",
+        "Instant PDF download"
       ]
     },
     {
+      section: "BONUS #1 - LIFETIME ACCESS",
       icon: FileText,
-      item: "15 Printable Tools & Templates",
+      item: "Visual Schedule Creator Tool",
+      value: 97,
+      details: [
+        "Create custom visual routines in minutes",
+        "Printable & digital formats",
+        "Reduce morning/bedtime battles",
+        "Works for any age"
+      ]
+    },
+    {
+      section: "BONUS #2 - LIFETIME ACCESS",
+      icon: FileText,
+      item: "Sensory Profile Assessment Tool",
+      value: 67,
+      details: [
+        "Identify your child's sensory triggers",
+        "Personalized regulation strategies",
+        "Printable reference guide",
+        "Update as your child grows"
+      ]
+    },
+    {
+      section: "BONUS #3 - LIFETIME ACCESS",
+      icon: FileText,
+      item: "IEP Preparation Toolkit",
+      value: 87,
+      details: [
+        "Document organizer templates",
+        "Meeting scripts & email templates",
+        "Accommodation request library",
+        "Progress tracking sheets"
+      ]
+    },
+    {
+      section: "BONUS #4 - LIFETIME ACCESS",
+      icon: FileText,
+      item: "Calm Corner Setup Guide",
       value: 47,
       details: [
-        "Visual schedules",
-        "Behavior tracking sheets",
-        "Communication cards",
-        "Emotion regulation charts"
+        "Room-by-room sensory audit",
+        "Budget-friendly tool suggestions",
+        "Printable calm-down cards",
+        "Visual emotion charts"
       ]
     },
     {
-      icon: Video,
-      item: "Video Walkthrough Series",
+      section: "BONUS #5 - LIFETIME ACCESS",
+      icon: FileText,
+      item: "Parent Self-Care Tracker",
       value: 37,
       details: [
-        "5 videos explaining key strategies",
-        "Real family examples",
-        "Troubleshooting common issues"
+        "30-day reset challenge",
+        "Burnout prevention checklist",
+        "5-minute regulation exercises",
+        "Support network builder"
       ]
     },
     {
+      section: "BONUS #6 - LIMITED TIME",
       icon: Mail,
-      item: "30-Day Email Support",
-      value: 97,
+      item: "Private Parent Community Access (3 Months)",
+      value: 67,
       details: [
-        "Direct access to Margareth",
-        "Personalized guidance",
-        "Implementation support"
-      ]
-    },
-    {
-      icon: Infinity,
-      item: "Lifetime Updates",
-      value: "Priceless",
-      details: [
-        "New strategies added quarterly",
-        "Updated research & tools",
-        "Forever access"
+        "Connect with other parents",
+        "Share wins & challenges",
+        "Expert Q&A sessions",
+        "Resource library"
       ]
     }
   ];
 
-  const totalValue = 278;
-  const yourPrice = 14.74;
+  const totalValue = 497;
+  const yourPrice = 47;
   const savings = totalValue - yourPrice;
   const savingsPercent = Math.round((savings / totalValue) * 100);
 
@@ -87,10 +119,10 @@ const ValueStackSection = () => {
         >
           <motion.div variants={fadeInUp} className="text-center space-y-4">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
-              Everything You Need in <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">ONE Complete System</span>
+              🎁 HERE'S EVERYTHING YOU GET TODAY
             </h2>
             <p className="text-xl text-gray-400">
-              Worth $278. Today $14.74. (95% OFF)
+              (Real Value: $497 — Today: $47)
             </p>
           </motion.div>
 
@@ -113,12 +145,18 @@ const ValueStackSection = () => {
                   variants={fadeInUp}
                   className="border-b border-white/10 pb-6 last:border-0 last:pb-0"
                 >
+                  {index > 0 && (
+                    <div className="text-xs text-gray-500 mb-2 font-semibold uppercase tracking-wider">
+                      ━━━━━━━━━━━━━━━━━━━━━━━━
+                    </div>
+                  )}
                   <div className="flex items-start justify-between gap-4 mb-3">
                     <div className="flex items-start gap-4 flex-1">
                       <div className="w-12 h-12 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
                         <item.icon className="w-6 h-6 text-cyan-400" />
                       </div>
                       <div className="flex-1">
+                        <p className="text-xs text-cyan-400 font-semibold mb-1 uppercase">{item.section}</p>
                         <div className="flex items-center justify-between mb-2">
                           <h4 className="text-lg md:text-xl font-semibold text-white">
                             ✓ {item.item}
@@ -130,11 +168,17 @@ const ValueStackSection = () => {
                         <ul className="space-y-1 ml-6">
                           {item.details.map((detail, i) => (
                             <li key={i} className="text-sm text-gray-400 flex items-start gap-2">
-                              <span className="text-green-400 mt-1">•</span>
+                              <span className="text-green-400 mt-1">✓</span>
                               <span>{detail}</span>
                             </li>
                           ))}
                         </ul>
+                        {index === 0 && (
+                          <p className="text-xs text-gray-500 mt-2 ml-6">(VALUE: ${item.value})</p>
+                        )}
+                        {index > 0 && (
+                          <p className="text-xs text-gray-500 mt-2 ml-6">(VALUE: ${item.value}/year → FREE)</p>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -151,16 +195,28 @@ const ValueStackSection = () => {
                   <span className="line-through text-gray-500 font-bold">${totalValue}</span>
                 </div>
                 
-                <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 border-2 border-red-500 rounded-2xl p-8 text-center space-y-4">
-                  <p className="text-gray-300 text-lg">YOUR INVESTMENT TODAY:</p>
-                  <div className="text-6xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">
-                    ${yourPrice}
+                <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 border-2 border-yellow-500/50 rounded-2xl p-8 text-center space-y-4">
+                  <div className="space-y-2 mb-4">
+                    <p className="text-gray-300 text-lg">💰 TOTAL VALUE: <span className="line-through text-gray-500">${totalValue}</span></p>
+                    <p className="text-2xl font-bold text-red-400">🔥 YOUR PRICE TODAY: ${yourPrice}</p>
+                    <p className="text-xl text-green-400 font-bold">💎 YOU SAVE: ${savings} ({savingsPercent}% OFF)</p>
                   </div>
-                  <p className="text-2xl text-green-400 font-bold">
-                    Save ${savings.toFixed(2)} ({savingsPercent}% OFF!)
-                  </p>
-                  <p className="text-gray-400">
-                    That's less than a pizza delivery
+                  <a
+                    href="https://adhdautism.gumroad.com/l/spehk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block w-full bg-gradient-to-r from-red-600 to-red-700 text-white font-bold py-4 px-8 rounded-lg text-xl hover:from-red-700 hover:to-red-800 transform hover:scale-105 transition-all shadow-2xl"
+                    style={{ boxShadow: '0 0 40px rgba(220, 38, 38, 0.6)' }}
+                  >
+                    YES! GIVE ME EVERYTHING FOR JUST ${yourPrice}
+                  </a>
+                  <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-300 mt-4">
+                    <span>🔒 Secure Checkout</span>
+                    <span>⚡ Instant Access</span>
+                    <span>💯 30-Day Guarantee</span>
+                  </div>
+                  <p className="text-sm text-yellow-400 mt-4">
+                    ⏰ WARNING: Price increases to $97 after 47 copies sold
                   </p>
                 </div>
               </motion.div>

@@ -4,6 +4,7 @@ import LiveSocialProof from "@/components/LiveSocialProof";
 import ProblemSection from "@/components/ProblemSection";
 import AuthorSection from "@/components/AuthorSection";
 import WhatsIncludedSection from "@/components/WhatsIncludedSection";
+import ValueStackSection from "@/components/ValueStackSection";
 import ResearchSection from "@/components/ResearchSection";
 import ArticlesSection from "@/components/ArticlesSection";
 import ResourceLocatorSection from "@/components/ResourceLocatorSection";
@@ -16,6 +17,7 @@ import EmailCapturePopup from "@/components/EmailCapturePopup";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 import AdSenseBanner from "@/components/AdSenseBanner";
 import AdSenseInline from "@/components/AdSenseInline";
+import LivePurchaseNotifications from "@/components/LivePurchaseNotifications";
 
 const Index = () => {
   return (
@@ -37,6 +39,7 @@ const Index = () => {
       {/* AdSense Inline - Between content sections */}
       <AdSenseInline className="max-w-7xl mx-auto px-4" />
       
+      <ValueStackSection />
       <WhatsIncludedSection />
       <ResearchSection />
       <ArticlesSection />
@@ -56,6 +59,7 @@ const Index = () => {
       <Footer />
       <EmailCapturePopup />
       <ExitIntentPopup />
+      <LivePurchaseNotifications />
     </div>
   );
 };

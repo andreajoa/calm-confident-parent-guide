@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { X, ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, ArrowRight, FileText, Calendar, CheckSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const ExitIntentPopup = () => {
@@ -24,69 +25,105 @@ const ExitIntentPopup = () => {
 
   if (!showPopup) return null;
 
-  const handleCTAClick = () => {
-    const pricingSection = document.getElementById('pricing');
-    if (pricingSection) {
-      pricingSection.scrollIntoView({ behavior: 'smooth' });
-      setShowPopup(false);
-    }
+  const handleClose = () => {
+    setShowPopup(false);
   };
 
+  const freeTools = [
+    { icon: FileText, name: "Emergency Meltdown Script", description: "Exact words to use during crisis" },
+    { icon: Calendar, name: "7-Day Morning Routine Template", description: "Start your transformation tomorrow" },
+    { icon: CheckSquare, name: "IEP Meeting Checklist", description: "Never forget important points again" }
+  ];
+
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="bg-gradient-to-br from-purple-900 to-slate-900 border-2 border-cyan-500 rounded-2xl p-6 md:p-8 max-w-lg w-full text-white relative shadow-2xl animate-scale-in">
-        <button
-          onClick={() => setShowPopup(false)}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
-          aria-label="Close popup"
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+        onClick={handleClose}
+      >
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.9, opacity: 0 }}
+          onClick={(e) => e.stopPropagation()}
+          className="bg-gradient-to-br from-slate-900 to-slate-950 border-2 border-cyan-500 rounded-2xl p-6 md:p-8 max-w-lg w-full text-white relative shadow-2xl"
         >
-          <X className="w-6 h-6" />
-        </button>
+          <button
+            onClick={handleClose}
+            className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors z-10"
+            aria-label="Close popup"
+          >
+            <X className="w-6 h-6" />
+          </button>
 
-        <div className="space-y-6">
-          <div className="text-center space-y-2">
-            <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-400">
-              Wait! Don't Go Yet!
-            </h3>
-            <p className="text-lg text-gray-300">
-              Get an <span className="text-yellow-400 font-bold">EXTRA 10% OFF</span> when you order in the next 5 minutes
-            </p>
+          <div className="space-y-6">
+            <div className="text-center space-y-2">
+              <motion.h3
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400"
+              >
+                ⚠️ Wait! Before You Go...
+              </motion.h3>
+              <p className="text-lg text-gray-300">
+                I get it. You're not sure yet. Can I send you something free?
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 rounded-xl p-4 space-y-3">
+              <p className="font-semibold text-cyan-400">Get these 3 tools instantly:</p>
+              {freeTools.map((tool, i) => (
+                <div key={i} className="flex items-start gap-3 bg-white/5 rounded-lg p-3">
+                  <tool.icon className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold text-sm">{tool.name}</p>
+                    <p className="text-xs text-gray-400">{tool.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="space-y-4">
+              <div id="exit-intent-email-form" className="bg-white/5 rounded-lg p-4">
+                <script 
+                  async 
+                  src="https://eocampaign1.com/form/72fb70c4-663b-11f0-b017-738da375565f.js" 
+                  data-form="72fb70c4-663b-11f0-b017-738da375565f"
+                ></script>
+              </div>
+
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold py-4 rounded-full shadow-lg hover:shadow-cyan-500/50 transition-all flex items-center justify-center gap-2"
+                onClick={() => {
+                  // Scroll to email form
+                  document.getElementById('exit-intent-email-form')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Send My Free Tools
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+
+              <button
+                onClick={handleClose}
+                className="w-full text-gray-400 hover:text-white transition-colors text-sm"
+              >
+                No thanks, I'll check back later
+              </button>
+            </div>
+
+            <div className="text-center text-xs text-gray-500 border-t border-white/10 pt-4">
+              No spam. Just tools that help.
+            </div>
           </div>
-
-          <div className="bg-yellow-500/20 border-2 border-yellow-500 rounded-xl p-4 text-center">
-            <p className="text-2xl font-bold text-yellow-400">$13.27</p>
-            <p className="text-sm text-gray-300 line-through">Instead of $14.74</p>
-            <p className="text-sm text-green-400 font-semibold mt-1">Save an extra $1.47!</p>
-          </div>
-
-          <div className="space-y-4">
-            <Button
-              onClick={handleCTAClick}
-              className="w-full bg-gradient-to-r from-pink-500 to-orange-500 text-white font-bold text-lg px-8 py-6 rounded-full shadow-2xl hover:shadow-pink-500/50 transform hover:scale-105 transition-all duration-300 relative overflow-hidden group"
-            >
-              <span className="relative z-10 flex items-center justify-center gap-2">
-                YES! I WANT THE EXTRA DISCOUNT
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </Button>
-
-            <button
-              onClick={() => setShowPopup(false)}
-              className="w-full text-gray-400 hover:text-white transition-colors text-sm"
-            >
-              No thanks, I'll pay full price
-            </button>
-          </div>
-
-          <div className="text-center text-xs text-gray-400">
-            ⏰ This offer expires in 5 minutes
-          </div>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
 export default ExitIntentPopup;
-

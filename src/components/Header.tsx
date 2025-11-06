@@ -1,16 +1,21 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import ContactPopup from "@/components/ContactPopup";
-import ConnectionStatus from "@/components/ConnectionStatus";
-import { useApiHealth } from "@/hooks/useApi";
 
 const Header = () => {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { data: health } = useApiHealth();
-  const online = !!health?.online;
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -18,89 +23,96 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-slate-950/95 backdrop-blur-xl border-b border-cyan-500/20 shadow-2xl' 
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
         <button 
           onClick={() => scrollToSection('hero')}
-          className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
+          className="flex items-center space-x-3 hover:opacity-80 transition-all group"
         >
-          <img 
-            src="/lovable-uploads/088e5682-630c-4d61-8ac4-712368b8222f.png" 
-            alt="The Calm & Confident Parent Logo" 
-            className="h-16 w-auto md:h-20"
-          />
-          <span className="font-bold text-xl md:text-2xl text-foreground hidden sm:block">
+          <div className="relative">
+            <img 
+              src="/lovable-uploads/088e5682-630c-4d61-8ac4-712368b8222f.png" 
+              alt="The Calm & Confident Parent Logo" 
+              className="h-12 w-auto md:h-16 transition-transform group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+          </div>
+          <span className="font-bold text-lg md:text-xl text-white hidden sm:block bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
             The Calm & Confident Parent
           </span>
         </button>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <button 
-            onClick={() => scrollToSection('about')}
-            className="text-foreground hover:text-primary transition-colors"
+        <nav className="hidden lg:flex items-center space-x-1">
+          {[
+            { label: 'About', id: 'about' },
+            { label: 'Guide', id: 'guide' },
+            { label: 'Resources', id: 'resources' },
+          ].map((item) => (
+            <button 
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className="px-4 py-2 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300 relative group"
+            >
+              {item.label}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 group-hover:w-full transition-all duration-300" />
+            </button>
+          ))}
+          <Link 
+            to="/podcasts"
+            className="px-4 py-2 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
           >
-            About
-          </button>
-          <button 
-            onClick={() => scrollToSection('guide')}
-            className="text-foreground hover:text-primary transition-colors"
+            Podcasts
+          </Link>
+          <Link 
+            to="/screening-assessment"
+            className="px-4 py-2 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
           >
-            Guide
-          </button>
-           <Link 
-             to="/podcasts"
-             className="text-foreground hover:text-primary transition-colors"
-           >
-             Podcasts
-           </Link>
-           <Link 
-             to="/screening-assessment"
-             className="text-foreground hover:text-primary transition-colors"
-           >
-             Assessment
-           </Link>
-           <a 
-             href="https://medium.com/@tdahma2"
-             target="_blank"
-             rel="noopener noreferrer"
-             className="text-foreground hover:text-primary transition-colors"
-           >
-             Blog
-           </a>
-          <button 
-            onClick={() => scrollToSection('resources')}
-            className="text-foreground hover:text-primary transition-colors"
+            Assessment
+          </Link>
+          <a 
+            href="https://medium.com/@tdahma2"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
           >
-            Resources
-          </button>
+            Blog
+          </a>
           <button 
             onClick={() => setIsContactOpen(true)}
-            className="text-foreground hover:text-primary transition-colors"
+            className="px-4 py-2 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
           >
             Contact
           </button>
         </nav>
 
-        {/* CTA + Status */}
+        {/* CTA Button */}
         <div className="flex items-center space-x-4">
           <Button 
             asChild
-            className="btn-hero hidden sm:inline-flex"
+            className="hidden sm:inline-flex bg-gradient-to-r from-pink-500 to-orange-500 text-white hover:from-orange-500 hover:to-pink-500 font-bold px-6 py-2 rounded-full shadow-lg hover:shadow-pink-500/50 transform hover:scale-105 transition-all duration-300 relative overflow-hidden group"
           >
             <a 
               href="https://adhdautism.gumroad.com/l/spehk" 
               target="_blank" 
               rel="noopener noreferrer"
+              className="flex items-center gap-2"
             >
+              <Sparkles className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
               Get Guide - $14.74
             </a>
           </Button>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground hover:text-primary"
+            className="lg:hidden text-white hover:text-cyan-400 transition-colors p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -108,64 +120,58 @@ const Header = () => {
         </div>
       </div>
 
-
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-border shadow-lg">
-          <nav className="flex flex-col p-4 space-y-4">
-            <button 
-              onClick={() => scrollToSection('about')}
-              className="text-left text-foreground hover:text-primary transition-colors py-2"
+        <div className="lg:hidden bg-slate-950/98 backdrop-blur-xl border-t border-cyan-500/20 shadow-2xl animate-slide-down">
+          <nav className="flex flex-col p-4 space-y-2">
+            {[
+              { label: 'About', id: 'about' },
+              { label: 'Guide', id: 'guide' },
+              { label: 'Resources', id: 'resources' },
+            ].map((item) => (
+              <button 
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="text-left text-white/80 hover:text-white hover:bg-white/5 transition-all py-3 px-4 rounded-lg"
+              >
+                {item.label}
+              </button>
+            ))}
+            <Link 
+              to="/podcasts"
+              className="text-left text-white/80 hover:text-white hover:bg-white/5 transition-all py-3 px-4 rounded-lg"
+              onClick={() => setIsMenuOpen(false)}
             >
-              About
-            </button>
-            <button 
-              onClick={() => scrollToSection('guide')}
-              className="text-left text-foreground hover:text-primary transition-colors py-2"
+              Podcasts
+            </Link>
+            <Link 
+              to="/screening-assessment"
+              className="text-left text-white/80 hover:text-white hover:bg-white/5 transition-all py-3 px-4 rounded-lg"
+              onClick={() => setIsMenuOpen(false)}
             >
-              Guide
-            </button>
-             <Link 
-               to="/podcasts"
-               className="text-left text-foreground hover:text-primary transition-colors py-2"
-               onClick={() => setIsMenuOpen(false)}
-             >
-               Podcasts
-             </Link>
-             <Link 
-               to="/screening-assessment"
-               className="text-left text-foreground hover:text-primary transition-colors py-2"
-               onClick={() => setIsMenuOpen(false)}
-             >
-               Assessment
-             </Link>
-             <a 
-               href="https://medium.com/@tdahma2"
-               target="_blank"
-               rel="noopener noreferrer"
-               className="text-left text-foreground hover:text-primary transition-colors py-2"
-               onClick={() => setIsMenuOpen(false)}
-             >
-               Blog
-             </a>
-            <button 
-              onClick={() => scrollToSection('resources')}
-              className="text-left text-foreground hover:text-primary transition-colors py-2"
+              Assessment
+            </Link>
+            <a 
+              href="https://medium.com/@tdahma2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-left text-white/80 hover:text-white hover:bg-white/5 transition-all py-3 px-4 rounded-lg"
+              onClick={() => setIsMenuOpen(false)}
             >
-              Resources
-            </button>
+              Blog
+            </a>
             <button 
               onClick={() => {
                 setIsContactOpen(true);
                 setIsMenuOpen(false);
               }}
-              className="text-left text-foreground hover:text-primary transition-colors py-2"
+              className="text-left text-white/80 hover:text-white hover:bg-white/5 transition-all py-3 px-4 rounded-lg"
             >
               Contact
             </button>
             <Button 
               asChild
-              className="btn-hero w-full mt-4"
+              className="w-full mt-4 bg-gradient-to-r from-pink-500 to-orange-500 text-white hover:from-orange-500 hover:to-pink-500 font-bold py-3 rounded-full"
             >
               <a 
                 href="https://adhdautism.gumroad.com/l/spehk" 

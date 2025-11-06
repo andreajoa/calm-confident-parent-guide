@@ -13,7 +13,6 @@ import PricingSection from "@/components/PricingSection";
 import FinalCTASection from "@/components/FinalCTASection";
 import Footer from "@/components/Footer";
 import EmailCapturePopup from "@/components/EmailCapturePopup";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 import AdSenseBanner from "@/components/AdSenseBanner";
 import AdSenseInline from "@/components/AdSenseInline";
@@ -56,7 +55,6 @@ const Index = () => {
       <FinalCTASection />
       <Footer />
       <EmailCapturePopup />
-      <WhatsAppButton />
       <ExitIntentPopup />
     </div>
   );

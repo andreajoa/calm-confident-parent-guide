@@ -41,9 +41,9 @@ const AuthorSection = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-3xl blur-xl group-hover:blur-2xl transition-all opacity-50" />
               <div className="relative bg-gradient-to-br from-purple-600 to-cyan-600 rounded-3xl p-8 transform group-hover:scale-105 transition-transform">
                 <img 
-                  src="/lovable-uploads/27aa0240-7cb8-45b5-a423-a71e022a91f7.png" 
+                  src="/lovable-uploads/margareth-almeida-author.jpg" 
                   alt="Margareth Almeida - Neuropsychopedagogue" 
-                  className="w-full rounded-2xl shadow-2xl"
+                  className="w-full rounded-2xl shadow-2xl object-cover"
                 />
               </div>
             </div>

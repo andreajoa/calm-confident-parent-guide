@@ -173,33 +173,34 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right: 3D Book Mockup */}
+          {/* Right: Book Image - Clean, no background */}
           <div className="relative hidden lg:block">
             <div 
               className="relative transform hover:scale-105 transition-transform duration-500"
               style={{ transform: `perspective(1000px) rotateY(${scrollY * 0.05}deg)` }}
             >
-              <div className="bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform">
-                <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 space-y-4">
-                  <img 
-                    src="/lovable-uploads/c00b81f9-2afc-4533-90ce-e9bd5a348900.png" 
-                    alt="The Calm & Confident Parent Book Cover" 
-                    className="w-full rounded-xl shadow-xl"
-                  />
-                  <div className="flex gap-1 justify-center">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
+              {/* Book Image - Clean, direct */}
+              <div className="relative">
+                <img 
+                  src="/lovable-uploads/c00b81f9-2afc-4533-90ce-e9bd5a348900.png" 
+                  alt="The Calm & Confident Parent Book Cover" 
+                  className="w-full max-w-md mx-auto drop-shadow-2xl rounded-lg"
+                />
+                
+                {/* Floating badges */}
+                <div className="absolute -top-4 -right-4 bg-red-500 text-white font-bold py-2 px-4 rounded-full animate-bounce shadow-lg z-10">
+                  84% OFF
                 </div>
-              </div>
-              
-              {/* Floating badges */}
-              <div className="absolute -top-4 -right-4 bg-red-500 text-white font-bold py-2 px-4 rounded-full animate-bounce shadow-lg">
-                84% OFF
-              </div>
-              <div className="absolute -bottom-4 -left-4 bg-green-500 text-white font-bold py-2 px-4 rounded-full shadow-lg">
-                Instant Access
+                <div className="absolute -bottom-4 -left-4 bg-green-500 text-white font-bold py-2 px-4 rounded-full shadow-lg z-10">
+                  Instant Access
+                </div>
+                
+                {/* Stars below book */}
+                <div className="flex gap-1 justify-center mt-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
               </div>
             </div>
           </div>

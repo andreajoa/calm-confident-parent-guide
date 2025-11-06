@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, HelpCircle, Sparkles } from "lucide-react";
 import ContactPopup from "./ContactPopup";
+import { Button } from "@/components/ui/button";
 
 const FAQSection = () => {
   const [isContactPopupOpen, setIsContactPopupOpen] = useState(false);
@@ -51,14 +52,14 @@ const FAQSection = () => {
 
   return (
     <>
-      <section className="py-16 md:py-24 bg-muted/30">
-        <div className="container mx-auto px-4">
+      <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-950 to-slate-900 text-white">
+        <div className="container mx-auto">
           <div className="max-w-4xl mx-auto">
             <div className="text-center space-y-4 mb-12 animate-fade-in-up">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-                Frequently Asked <span className="text-primary">Questions</span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+                Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Questions</span>
               </h2>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-xl text-gray-400">
                 Get answers to common concerns and make an informed decision for your family.
               </p>
             </div>
@@ -68,15 +69,15 @@ const FAQSection = () => {
                 <AccordionItem 
                   key={index} 
                   value={`item-${index}`}
-                  className="card-elevated px-6 border-none"
+                  className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl px-6 hover:bg-white/10 hover:border-cyan-500/50 transition-all"
                 >
-                  <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary py-6">
+                  <AccordionTrigger className="text-left font-semibold text-white hover:text-cyan-400 py-6">
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                      <HelpCircle className="h-5 w-5 text-cyan-400 mt-1 flex-shrink-0" />
                       <span>{faq.question}</span>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 ml-8">
+                  <AccordionContent className="text-gray-300 leading-relaxed pb-6 ml-8">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -84,25 +85,27 @@ const FAQSection = () => {
             </Accordion>
 
             {/* Additional Support */}
-            <div className="mt-12 text-center bg-primary/5 p-8 rounded-xl border border-primary/20 animate-fade-in-up">
-              <h3 className="text-xl font-semibold text-foreground mb-4">
+            <div className="mt-12 text-center bg-gradient-to-r from-cyan-500/20 to-purple-500/20 p-8 rounded-xl border border-cyan-500/30 backdrop-blur-sm animate-fade-in-up">
+              <h3 className="text-xl font-semibold text-white mb-4 flex items-center justify-center gap-2">
+                <Sparkles className="w-5 h-5 text-cyan-400" />
                 Still Have Questions?
               </h3>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-gray-300 mb-6">
                 We're here to help! Get personalized answers to your specific situation.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button 
+                <Button 
                   onClick={() => setIsContactPopupOpen(true)}
-                  className="btn-secondary inline-flex items-center justify-center"
+                  variant="outline"
+                  className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10"
                 >
                   Email Us Directly
-                </button>
+                </Button>
                 <a 
                   href="https://adhdautism.gumroad.com/l/spehk"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-hero inline-flex items-center justify-center"
+                  className="bg-gradient-to-r from-pink-500 to-orange-500 text-white hover:from-orange-500 hover:to-pink-500 font-bold px-6 py-3 rounded-full shadow-lg hover:shadow-pink-500/50 transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center"
                 >
                   Get Started Now - $14.74
                 </a>

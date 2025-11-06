@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MapPin, Phone, Mail, Users } from "lucide-react";
+import { MapPin, Phone, Mail, Users, Search, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
@@ -63,35 +63,36 @@ const ResourceLocatorSection = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-900 to-slate-950 text-white">
+      <div className="container mx-auto">
         <div className="text-center space-y-12">
           <div className="space-y-4 animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-              Find Local Support in <span className="text-primary">Your Area</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+              Find Local Support in <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Your Area</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Connect with local resources, support groups, specialists, and other families in your community.
             </p>
           </div>
 
           {/* Search Interface */}
-          <div className="max-w-2xl mx-auto card-elevated p-8 animate-fade-in-up">
+          <div className="max-w-2xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 animate-fade-in-up">
             <div className="space-y-6">
               <div className="space-y-4">
-                <label className="text-lg font-semibold text-foreground">
+                <label className="text-lg font-semibold text-white flex items-center gap-2">
+                  <Search className="w-5 h-5 text-cyan-400" />
                   Select Your State/Province:
                 </label>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <h4 className="text-sm font-medium text-muted-foreground mb-2">United States</h4>
+                    <h4 className="text-sm font-medium text-gray-400 mb-2">United States</h4>
                     <Select value={selectedState} onValueChange={setSelectedState}>
-                      <SelectTrigger>
+                      <SelectTrigger className="bg-white/5 border-white/10 text-white">
                         <SelectValue placeholder="Choose a state" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="bg-slate-900 border-white/10">
                         {states.map((state) => (
-                          <SelectItem key={state} value={state}>
+                          <SelectItem key={state} value={state} className="text-white hover:bg-white/10">
                             {state}
                           </SelectItem>
                         ))}
@@ -99,14 +100,14 @@ const ResourceLocatorSection = () => {
                     </Select>
                   </div>
                   <div>
-                    <h4 className="text-sm font-medium text-muted-foreground mb-2">Canada</h4>
+                    <h4 className="text-sm font-medium text-gray-400 mb-2">Canada</h4>
                     <Select value={selectedState} onValueChange={setSelectedState}>
-                      <SelectTrigger>
+                      <SelectTrigger className="bg-white/5 border-white/10 text-white">
                         <SelectValue placeholder="Choose a province" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="bg-slate-900 border-white/10">
                         {provinces.map((province) => (
-                          <SelectItem key={province} value={province}>
+                          <SelectItem key={province} value={province} className="text-white hover:bg-white/10">
                             {province}
                           </SelectItem>
                         ))}
@@ -119,8 +120,9 @@ const ResourceLocatorSection = () => {
               <Button 
                 onClick={handleFindResources}
                 disabled={!selectedState}
-                className="btn-hero w-full"
+                className="w-full bg-gradient-to-r from-pink-500 to-orange-500 text-white hover:from-orange-500 hover:to-pink-500 font-bold py-6 rounded-full shadow-lg hover:shadow-pink-500/50 transform hover:scale-105 transition-all duration-300"
               >
+                <Sparkles className="w-5 h-5 mr-2" />
                 Find Resources
               </Button>
             </div>
@@ -130,10 +132,10 @@ const ResourceLocatorSection = () => {
           {showResults && (
             <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up">
               <div className="text-center">
-                <h3 className="text-2xl font-bold text-foreground mb-2">
+                <h3 className="text-2xl font-bold text-white mb-2">
                   Resources in {selectedState}
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-gray-400">
                   Here are some local resources to support your family's journey:
                 </p>
               </div>
@@ -142,33 +144,33 @@ const ResourceLocatorSection = () => {
                 {sampleResources.map((resource, index) => (
                   <div 
                     key={index} 
-                    className="card-elevated p-6 space-y-4 text-left"
+                    className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 space-y-4 text-left hover:bg-white/10 hover:border-cyan-500/50 transition-all transform hover:scale-105"
                   >
                     <div className="flex items-start justify-between">
                       <div className="space-y-2 flex-1">
-                        <div className="inline-block bg-primary/10 text-primary text-xs font-semibold px-2 py-1 rounded">
+                        <div className="inline-block bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-400 text-xs font-semibold px-3 py-1 rounded-full border border-cyan-500/50">
                           {resource.type}
                         </div>
-                        <h4 className="text-lg font-semibold text-foreground">
+                        <h4 className="text-lg font-semibold text-white">
                           {resource.name}
                         </h4>
-                        <p className="text-muted-foreground text-sm">
+                        <p className="text-gray-400 text-sm">
                           {resource.description}
                         </p>
                       </div>
                     </div>
 
-                    <div className="space-y-2 text-sm">
-                      <div className="flex items-center space-x-2 text-muted-foreground">
-                        <MapPin className="h-4 w-4" />
+                    <div className="space-y-2 text-sm border-t border-white/10 pt-4">
+                      <div className="flex items-center space-x-2 text-gray-300">
+                        <MapPin className="h-4 w-4 text-cyan-400" />
                         <span>{resource.location}</span>
                       </div>
-                      <div className="flex items-center space-x-2 text-muted-foreground">
-                        <Phone className="h-4 w-4" />
+                      <div className="flex items-center space-x-2 text-gray-300">
+                        <Phone className="h-4 w-4 text-cyan-400" />
                         <span>{resource.contact}</span>
                       </div>
-                      <div className="flex items-center space-x-2 text-muted-foreground">
-                        <Mail className="h-4 w-4" />
+                      <div className="flex items-center space-x-2 text-gray-300">
+                        <Mail className="h-4 w-4 text-cyan-400" />
                         <span>{resource.email}</span>
                       </div>
                     </div>
@@ -176,15 +178,15 @@ const ResourceLocatorSection = () => {
                 ))}
               </div>
 
-              <div className="text-center bg-primary/5 p-6 rounded-xl border border-primary/20">
-                <Users className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h4 className="text-lg font-semibold text-foreground mb-2">
+              <div className="text-center bg-gradient-to-r from-cyan-500/20 to-purple-500/20 p-6 rounded-xl border border-cyan-500/30 backdrop-blur-sm">
+                <Users className="h-8 w-8 text-cyan-400 mx-auto mb-3" />
+                <h4 className="text-lg font-semibold text-white mb-2">
                   Need Personalized Help?
                 </h4>
-                <p className="text-muted-foreground mb-4">
+                <p className="text-gray-300 mb-4">
                   Can't find what you're looking for? Get personalized resource recommendations for your specific situation.
                 </p>
-                <Button asChild variant="outline">
+                <Button asChild variant="outline" className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10">
                   <a href="mailto:tdahma2@gmail.com">
                     Email tdahma2@gmail.com
                   </a>

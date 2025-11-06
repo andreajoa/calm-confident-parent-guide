@@ -38,8 +38,8 @@ const LazySection = ({ children, fallback, rootMargin = '100px' }: LazySectionPr
   }
 
   return (
-    <div ref={ref} style={{ minHeight: '200px' }}>
-      {fallback || <div className="animate-pulse bg-white/5 rounded-xl h-64" />}
+    <div ref={ref} style={{ minHeight: 1 }}>
+      {fallback || null}
     </div>
   );
 };

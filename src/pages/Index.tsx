@@ -56,14 +56,14 @@ const Index = () => {
       </LazySection>
       
       {/* SECTION 5: Solution (Value Stack) */}
-      <Suspense fallback={<div className="min-h-[400px]" />}>
+      <Suspense fallback={null}>
         <LazySection>
           <ValueStackSection />
         </LazySection>
       </Suspense>
       
       {/* SECTION 6: Chapter Breakdown */}
-      <Suspense fallback={<div className="min-h-[400px]" />}>
+      <Suspense fallback={null}>
         <LazySection>
           <ChapterBreakdownSection />
         </LazySection>
@@ -77,7 +77,7 @@ const Index = () => {
       {/* SECTION 7: Value Stack (already shown above, but keeping for structure) */}
       
       {/* SECTION 8: Proof & Testimonials */}
-      <Suspense fallback={<div className="min-h-[400px]" />}>
+      <Suspense fallback={null}>
         <LazySection>
           <TestimonialsSection />
         </LazySection>
@@ -86,14 +86,14 @@ const Index = () => {
       {/* SECTION 9: Tools Demonstration - Using existing WhatsIncludedSection as placeholder */}
       
       {/* SECTION 10: Who Is This For */}
-      <Suspense fallback={<div className="min-h-[400px]" />}>
+      <Suspense fallback={null}>
         <LazySection>
           <WhoIsThisForSection />
         </LazySection>
       </Suspense>
       
       {/* SECTION 11: FAQ */}
-      <Suspense fallback={<div className="min-h-[400px]" />}>
+      <Suspense fallback={null}>
         <LazySection>
           <FAQSection />
         </LazySection>
@@ -105,21 +105,21 @@ const Index = () => {
       </LazySection>
       
       {/* SECTION 12: Final Urgency */}
-      <Suspense fallback={<div className="min-h-[400px]" />}>
+      <Suspense fallback={null}>
         <LazySection>
           <FinalUrgencySection />
         </LazySection>
       </Suspense>
       
       {/* SECTION 13: Guarantee Visual */}
-      <Suspense fallback={<div className="min-h-[400px]" />}>
+      <Suspense fallback={null}>
         <LazySection>
           <GuaranteeVisualSection />
         </LazySection>
       </Suspense>
       
       {/* SECTION 14: Final CTA */}
-      <Suspense fallback={<div className="min-h-[400px]" />}>
+      <Suspense fallback={null}>
         <LazySection>
           <FinalCTASection />
         </LazySection>

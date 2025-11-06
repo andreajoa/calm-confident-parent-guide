@@ -9,13 +9,14 @@ interface Notification {
 }
 
 const LivePurchaseNotifications = () => {
-  const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [queue, setQueue] = useState<Notification[]>([]);
+  const [visible, setVisible] = useState<Notification[]>([]);
 
   const names = ['Sarah M.', 'Jennifer L.', 'Michael T.', 'David K.', 'Emma W.', 'John C.', 'Lisa H.', 'Amanda R.'];
   const cities = ['Miami', 'NYC', 'LA', 'Chicago', 'Austin', 'Toronto', 'London', 'Sydney'];
 
+  // Feed queue regularly
   useEffect(() => {
-    // Simulate real purchases (connect to actual backend in production)
     const interval = setInterval(() => {
       const notification: Notification = {
         id: Date.now(),
@@ -23,17 +24,33 @@ const LivePurchaseNotifications = () => {
         city: cities[Math.floor(Math.random() * cities.length)],
         action: Math.random() > 0.5 ? 'purchased' : 'started reading'
       };
-      
-      setNotifications(prev => [notification, ...prev].slice(0, 5));
-    }, 15000); // Every 15 seconds
-    
+      setQueue(prev => [...prev, notification].slice(-12));
+    }, 3000); // add every 3s to keep cycling
     return () => clearInterval(interval);
   }, []);
 
+  // Cycle visible items: show 2, swap every 5s
+  useEffect(() => {
+    if (visible.length === 0 && queue.length > 0) {
+      setVisible(queue.slice(0, 2));
+      setQueue(prev => prev.slice(2));
+    }
+    const cycle = setInterval(() => {
+      setVisible(prev => {
+        if (queue.length === 0) return prev;
+        const next = queue.slice(0, 2);
+        setQueue(q => q.slice(2));
+        return next;
+      });
+    }, 5000);
+    return () => clearInterval(cycle);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [queue.length]);
+
   return (
-    <div className="fixed bottom-6 right-6 z-50 space-y-3 max-w-sm">
+    <div className="fixed bottom-6 right-6 z-50 space-y-3 max-w-sm pointer-events-none">
       <AnimatePresence>
-        {notifications.map((notif, index) => (
+        {visible.map((notif, index) => (
           <motion.div
             key={notif.id}
             initial={{ x: 300, opacity: 0 }}

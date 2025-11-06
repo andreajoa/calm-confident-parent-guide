@@ -286,12 +286,12 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right: Book Image - Clean, Direct */}
+          {/* Right: Book Image - Clean, Direct (Visible on mobile) */}
           <motion.div 
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.8 }}
-            className="relative hidden lg:block"
+            className="relative block"
           >
             <motion.div 
               className="relative"
@@ -307,7 +307,7 @@ const HeroSection = () => {
               <img 
                 src="/lovable-uploads/c00b81f9-2afc-4533-90ce-e9bd5a348900.png" 
                 alt="The Calm & Confident Parent Book Cover" 
-                className="w-full max-w-md mx-auto drop-shadow-2xl rounded-lg"
+                className="w-2/3 sm:w-1/2 lg:w-full max-w-md mx-auto drop-shadow-2xl rounded-lg"
                 loading="lazy"
                 decoding="async"
               />

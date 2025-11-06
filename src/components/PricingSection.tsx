@@ -119,19 +119,19 @@ const PricingSection = () => {
               <div className="border-b border-white/10 pb-6">
                 <div className="flex justify-between items-center text-2xl mb-4">
                   <span className="text-gray-300">TOTAL VALUE:</span>
-                  <span className="line-through text-gray-500 font-bold">$278</span>
+                  <span className="line-through text-gray-500 font-bold">$497</span>
                 </div>
                 
-                <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 border-2 border-red-500 rounded-2xl p-8 space-y-4">
+                <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 border-2 border-yellow-500/50 rounded-2xl p-8 space-y-4 text-center">
                   <p className="text-gray-300 text-lg">YOUR PRICE TODAY:</p>
                   <div className="text-6xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">
-                    $14.74
+                    $47
                   </div>
                   <p className="text-2xl text-green-400 font-bold">
-                    Save $263.26 (95% OFF!)
+                    Save $450 (91% OFF!)
                   </p>
-                  <p className="text-gray-400">
-                    That's less than a pizza delivery
+                  <p className="text-sm text-yellow-400">
+                    ⏰ WARNING: Price increases to $97 after 47 copies sold
                   </p>
                 </div>
               </div>
@@ -184,7 +184,7 @@ const PricingSection = () => {
                   className="btn-cta-primary w-full max-w-md mx-auto text-xl px-12 py-6 flex items-center justify-center gap-3 group block"
                 >
                   <Sparkles className="w-6 h-6 group-hover:rotate-180 transition-transform duration-300" />
-                  Get Instant Access - $14.74
+                  YES! GIVE ME EVERYTHING FOR JUST $47
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
                 </a>
               </motion.div>

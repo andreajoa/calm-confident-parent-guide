@@ -38,16 +38,13 @@ const SectionBridge = ({
       <div className="container mx-auto max-w-4xl">
         <motion.div
           className="flex items-center justify-center gap-3 text-white/90 text-lg md:text-xl font-semibold"
-          animate={{ y: [0, -5, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ y: [0, -3, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         >
-          <span className="text-cyan-400">
+          <span className="text-cyan-400 flex-shrink-0">
             {iconComponent[icon]}
           </span>
-          <span>{text}</span>
-          <span className="text-cyan-400">
-            {iconComponent[icon]}
-          </span>
+          <span className="text-center">{text}</span>
         </motion.div>
       </div>
     </motion.div>

@@ -24,7 +24,7 @@ const ChapterBreakdownSection = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-900 to-slate-950 text-white" style={{ marginTop: 0 }}>
+    <section className="pt-0 pb-16 md:pb-24 px-4 bg-gradient-to-b from-slate-900 to-slate-950 text-white" style={{ marginTop: 0, paddingTop: 0 }}>
       <div className="container mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 40 }}

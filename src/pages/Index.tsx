@@ -71,13 +71,13 @@ const Index = () => {
         icon="sparkles"
       />
       
-      {/* AdSense Inline - Only if ad loads */}
-      <AdSenseInline className="w-full" />
-      
-      {/* SECTION 5: Solution (Value Stack) - Load immediately, no lazy loading gaps */}
+      {/* SECTION 5: Solution (Value Stack) - Load immediately, NO GAPS, connects directly to bridge */}
       <Suspense fallback={null}>
         <ValueStackSection />
       </Suspense>
+      
+      {/* AdSense Inline - Only if ad loads, moved after content to prevent gaps */}
+      <AdSenseInline className="w-full" />
       
       {/* SECTION 6: Chapter Breakdown - Load immediately */}
       <Suspense fallback={null}>

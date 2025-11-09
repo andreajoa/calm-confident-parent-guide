@@ -32,6 +32,7 @@ const ChapterBreakdownSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
+          style={{ marginTop: 0, paddingTop: '1rem' }}
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Here's Exactly What You'll <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Discover Inside:</span>

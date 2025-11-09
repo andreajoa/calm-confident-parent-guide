@@ -108,16 +108,16 @@ const ValueStackSection = () => {
   };
 
   return (
-    <section className="pt-0 pb-16 md:pb-24 px-4 bg-gradient-to-b from-slate-950 to-slate-900 text-white" style={{ marginTop: 0, paddingTop: 0 }}>
+    <section className="pt-0 pb-8 px-4 bg-gradient-to-b from-slate-950 to-slate-900 text-white" style={{ marginTop: 0, paddingTop: 0, paddingBottom: '2rem' }}>
       <div className="container mx-auto max-w-5xl">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={staggerContainer}
-          className="space-y-8"
+          className="space-y-6"
         >
-          <motion.div variants={fadeInUp} className="text-center space-y-4" style={{ marginTop: 0, paddingTop: '1rem' }}>
+          <motion.div variants={fadeInUp} className="text-center space-y-4" style={{ marginTop: 0, paddingTop: '0.5rem' }}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
               🎁 HERE'S EVERYTHING YOU GET TODAY
             </h2>

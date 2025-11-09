@@ -32,8 +32,8 @@ const SectionBridge = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.5 }}
-      className={`${variantStyles[variant]} py-3 md:py-4 px-4 text-center`}
-      style={{ marginTop: 0, marginBottom: 0, paddingTop: '1rem', paddingBottom: '1rem' }}
+      className={`${variantStyles[variant]} py-2 md:py-3 px-4 text-center`}
+      style={{ marginTop: 0, marginBottom: 0, paddingTop: '0.75rem', paddingBottom: '0.75rem' }}
     >
       <div className="container mx-auto max-w-4xl">
         <motion.div

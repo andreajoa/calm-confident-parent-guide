@@ -24,15 +24,15 @@ const ChapterBreakdownSection = () => {
   ];
 
   return (
-    <section className="pt-0 pb-16 md:pb-24 px-4 bg-gradient-to-b from-slate-900 to-slate-950 text-white" style={{ marginTop: 0, paddingTop: 0 }}>
+    <section className="pt-0 pb-16 md:pb-24 px-4 bg-gradient-to-b from-slate-900 to-slate-950 text-white" style={{ marginTop: 0, paddingTop: '0.5rem' }}>
       <div className="container mx-auto max-w-5xl">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-12"
-          style={{ marginTop: 0, paddingTop: '1rem' }}
+          style={{ marginTop: 0, paddingTop: 0 }}
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Here's Exactly What You'll <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Discover Inside:</span>

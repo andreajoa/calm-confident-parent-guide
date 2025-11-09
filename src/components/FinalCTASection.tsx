@@ -12,7 +12,7 @@ const FinalCTASection = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 px-4 hero-gradient text-white overflow-hidden relative">
+    <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-900 via-purple-950 to-slate-950 text-white overflow-hidden relative" style={{ marginTop: 0 }}>
       <div className="container mx-auto">
         <div className="max-w-4xl mx-auto text-center space-y-12">
           <div className="space-y-6 animate-fade-in-up">

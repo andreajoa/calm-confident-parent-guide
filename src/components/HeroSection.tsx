@@ -90,7 +90,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden bg-gradient-to-b from-slate-950 via-purple-950 to-slate-950 text-white">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden bg-gradient-to-b from-slate-950 via-purple-950 to-slate-950 text-white -mt-0">
       {/* Animated Background Particles */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <motion.div 

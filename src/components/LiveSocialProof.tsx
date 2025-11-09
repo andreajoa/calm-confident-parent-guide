@@ -22,7 +22,7 @@ const LiveSocialProof = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-r from-green-500/20 to-cyan-500/20 border-y border-cyan-500/30 py-4 sticky top-0 z-40 backdrop-blur-sm">
+    <div className="bg-gradient-to-r from-green-500/20 to-cyan-500/20 border-y border-cyan-500/30 py-4 z-40 backdrop-blur-sm relative" style={{ marginTop: 0, marginBottom: 0 }}>
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 text-sm">
           <span className="flex items-center gap-2">

@@ -27,99 +27,83 @@ const EmailCapturePopup = lazy(() => import("@/components/EmailCapturePopup"));
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-slate-950">
       {/* SECTION 1: Sticky Top Bar */}
       <StickyTopBar />
       
       <Header />
       
-      {/* SECTION 2: Hero Section */}
+      {/* SECTION 2: Hero Section - NO GAPS, flows directly */}
       <HeroSection />
       <LiveSocialProof />
       
-      {/* AdSense Banner - Renders directly, hides if no ad (no LazySection wrapper to prevent gaps) */}
+      {/* AdSense Banner - Only render if ad loads, otherwise nothing */}
       <AdSenseBanner format="horizontal" className="w-full" />
       
-      {/* SECTION 3: Authority Proof */}
+      {/* SECTION 3: Authority Proof - Flows directly from Hero */}
       <AuthorityProofSection />
       
-      {/* SECTION 4: Problem Agitation */}
+      {/* SECTION 4: Problem Agitation - Background connects to previous */}
       <ProblemSection />
       
-      {/* Author bio for credibility stacking */}
+      {/* Author bio for credibility stacking - Background connects */}
       <AuthorSection />
       
-      {/* AdSense Inline - Renders directly, hides if no ad */}
+      {/* AdSense Inline - Only if ad loads */}
       <AdSenseInline className="w-full" />
       
-      {/* SECTION 5: Solution (Value Stack) */}
+      {/* SECTION 5: Solution (Value Stack) - Load immediately, no lazy loading gaps */}
       <Suspense fallback={null}>
-        <LazySection>
-          <ValueStackSection />
-        </LazySection>
+        <ValueStackSection />
       </Suspense>
       
-      {/* SECTION 6: Chapter Breakdown */}
+      {/* SECTION 6: Chapter Breakdown - Load immediately */}
       <Suspense fallback={null}>
-        <LazySection>
-          <ChapterBreakdownSection />
-        </LazySection>
+        <ChapterBreakdownSection />
       </Suspense>
       
-      {/* AdSense Inline - Renders directly, hides if no ad */}
+      {/* AdSense Inline - Only if ad loads */}
       <AdSenseInline className="w-full" />
       
-      {/* SECTION 8: Proof & Testimonials */}
+      {/* SECTION 8: Proof & Testimonials - Load immediately */}
       <Suspense fallback={null}>
-        <LazySection>
-          <TestimonialsSection />
-        </LazySection>
+        <TestimonialsSection />
       </Suspense>
       
-      {/* SECTION 10: Who Is This For */}
+      {/* SECTION 10: Who Is This For - Load immediately */}
       <Suspense fallback={null}>
-        <LazySection>
-          <WhoIsThisForSection />
-        </LazySection>
+        <WhoIsThisForSection />
       </Suspense>
       
-      {/* SECTION 11: FAQ */}
+      {/* SECTION 11: FAQ - Load immediately */}
       <Suspense fallback={null}>
-        <LazySection>
-          <FAQSection />
-        </LazySection>
+        <FAQSection />
       </Suspense>
       
-      {/* AdSense Inline - Renders directly, hides if no ad */}
+      {/* AdSense Inline - Only if ad loads */}
       <AdSenseInline className="w-full" />
       
-      {/* SECTION 12: Final Urgency */}
+      {/* SECTION 12: Final Urgency - Load immediately */}
       <Suspense fallback={null}>
-        <LazySection>
-          <FinalUrgencySection />
-        </LazySection>
+        <FinalUrgencySection />
       </Suspense>
       
-      {/* SECTION 13: Guarantee Visual */}
+      {/* SECTION 13: Guarantee Visual - Load immediately */}
       <Suspense fallback={null}>
-        <LazySection>
-          <GuaranteeVisualSection />
-        </LazySection>
+        <GuaranteeVisualSection />
       </Suspense>
       
-      {/* SECTION 14: Final CTA */}
+      {/* SECTION 14: Final CTA - Load immediately */}
       <Suspense fallback={null}>
-        <LazySection>
-          <FinalCTASection />
-        </LazySection>
+        <FinalCTASection />
       </Suspense>
       
-      {/* Footer */}
+      {/* Footer - Load immediately, connects to previous section */}
       <Suspense fallback={null}>
         <Footer />
       </Suspense>
       
-      {/* Popups & Notifications */}
+      {/* Popups & Notifications - No layout impact */}
       <Suspense fallback={null}>
         <EmailCapturePopup />
       </Suspense>
@@ -127,7 +111,7 @@ const Index = () => {
       <ExitIntentPopup />
       <LivePurchaseNotifications />
       
-      {/* Sticky CTA Button */}
+      {/* Sticky CTA Button - Fixed position, no layout impact */}
       <StickyCTAButton />
     </div>
   );

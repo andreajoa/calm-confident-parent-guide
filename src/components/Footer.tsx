@@ -22,7 +22,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-slate-950 to-black text-white py-16 border-t border-cyan-500/20">
+    <footer className="bg-gradient-to-b from-slate-950 to-black text-white py-16 border-t border-cyan-500/20" style={{ marginTop: 0 }}>
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and Description */}

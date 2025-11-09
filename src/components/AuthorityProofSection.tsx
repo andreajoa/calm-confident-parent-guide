@@ -8,7 +8,7 @@ const AuthorityProofSection = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-purple-950/70 to-slate-950/40 text-white">
+    <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-950 via-purple-950/70 to-slate-950 text-white" style={{ marginTop: 0 }}>
       <div className="container mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

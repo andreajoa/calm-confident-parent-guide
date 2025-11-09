@@ -58,7 +58,7 @@ const TestimonialsSection = () => {
   }, [testimonials.length]);
 
   return (
-    <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-900 to-slate-950 text-white">
+    <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-950 to-slate-900 text-white" style={{ marginTop: 0 }}>
       <div className="container mx-auto">
         <div className="text-center space-y-12">
           <div className="space-y-4 animate-fade-in-up">

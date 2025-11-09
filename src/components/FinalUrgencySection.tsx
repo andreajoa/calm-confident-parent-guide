@@ -28,7 +28,7 @@ const FinalUrgencySection = () => {
   }, [copiesLeft]);
 
   return (
-    <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-red-950 via-red-900 to-red-950 text-white relative overflow-hidden">
+    <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-950 via-red-950 to-slate-950 text-white relative overflow-hidden" style={{ marginTop: 0 }}>
       {/* Pulsing border effect */}
       <motion.div
         className="absolute inset-0 border-4 border-red-500 rounded-lg"

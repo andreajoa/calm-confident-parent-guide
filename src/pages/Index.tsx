@@ -37,23 +37,20 @@ const Index = () => {
       <HeroSection />
       <LiveSocialProof />
       
-      {/* AdSense Banner - Hidden if no ad loads */}
-      <LazySection>
-        <AdSenseBanner format="horizontal" className="w-full" />
-      </LazySection>
+      {/* AdSense Banner - Renders directly, hides if no ad (no LazySection wrapper to prevent gaps) */}
+      <AdSenseBanner format="horizontal" className="w-full" />
       
       {/* SECTION 3: Authority Proof */}
       <AuthorityProofSection />
       
       {/* SECTION 4: Problem Agitation */}
       <ProblemSection />
-      {/* (Keep Author bio later for credibility stacking) */}
+      
+      {/* Author bio for credibility stacking */}
       <AuthorSection />
       
-      {/* AdSense Inline - Hidden if no ad loads */}
-      <LazySection>
-        <AdSenseInline className="w-full" />
-      </LazySection>
+      {/* AdSense Inline - Renders directly, hides if no ad */}
+      <AdSenseInline className="w-full" />
       
       {/* SECTION 5: Solution (Value Stack) */}
       <Suspense fallback={null}>
@@ -69,12 +66,8 @@ const Index = () => {
         </LazySection>
       </Suspense>
       
-      {/* AdSense Inline - Hidden if no ad loads */}
-      <LazySection>
-        <AdSenseInline className="w-full" />
-      </LazySection>
-      
-      {/* SECTION 7: Value Stack (already shown above, but keeping for structure) */}
+      {/* AdSense Inline - Renders directly, hides if no ad */}
+      <AdSenseInline className="w-full" />
       
       {/* SECTION 8: Proof & Testimonials */}
       <Suspense fallback={null}>
@@ -82,8 +75,6 @@ const Index = () => {
           <TestimonialsSection />
         </LazySection>
       </Suspense>
-      
-      {/* SECTION 9: Tools Demonstration - Using existing WhatsIncludedSection as placeholder */}
       
       {/* SECTION 10: Who Is This For */}
       <Suspense fallback={null}>
@@ -99,10 +90,8 @@ const Index = () => {
         </LazySection>
       </Suspense>
       
-      {/* AdSense Inline - Hidden if no ad loads */}
-      <LazySection>
-        <AdSenseInline className="w-full" />
-      </LazySection>
+      {/* AdSense Inline - Renders directly, hides if no ad */}
+      <AdSenseInline className="w-full" />
       
       {/* SECTION 12: Final Urgency */}
       <Suspense fallback={null}>

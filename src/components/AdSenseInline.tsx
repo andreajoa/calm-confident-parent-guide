@@ -19,50 +19,63 @@ const AdSenseInline = ({ slot = '', className = '' }: AdSenseInlineProps) => {
   const adRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    try {
-      // Wait for AdSense script to load
-      const checkAdSense = setInterval(() => {
-        if (typeof window !== 'undefined' && window.adsbygoogle) {
-          try {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-            setAdLoaded(true);
-            clearInterval(checkAdSense);
-          } catch (err) {
-            console.error('AdSense error:', err);
-          }
+    // Fast-fail if AdSense script not available
+    if (typeof window === 'undefined' || !window.adsbygoogle) {
+      // Check immediately - if script not loaded after 500ms, hide
+      const quickCheck = setTimeout(() => {
+        if (!window.adsbygoogle) {
+          setAdVisible(false);
         }
-      }, 100);
+      }, 500);
+      return () => clearTimeout(quickCheck);
+    }
 
-      // Check if ad actually rendered after a delay
-      const checkAdRendered = setTimeout(() => {
+    let checkAdRendered: NodeJS.Timeout;
+    let timeout: NodeJS.Timeout;
+
+    try {
+      // AdSense script is available, try to load ad immediately
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      setAdLoaded(true);
+      
+      // Check if ad rendered (check after 800ms for faster feedback)
+      checkAdRendered = setTimeout(() => {
         if (adRef.current) {
           const adElement = adRef.current;
-          // Check if ad has meaningful height (more than 20px indicates content)
           const hasContent = adElement.offsetHeight > 20;
           
           if (!hasContent) {
-            // Hide container if no ad rendered
             setAdVisible(false);
+            // Remove from DOM immediately to prevent layout impact
+            if (containerRef.current) {
+              containerRef.current.style.display = 'none';
+            }
+          }
+        } else {
+          setAdVisible(false);
+        }
+      }, 800); // Check after 800ms
+
+      // Overall timeout - fail fast (1.5 seconds total)
+      timeout = setTimeout(() => {
+        if (adRef.current && adRef.current.offsetHeight <= 20) {
+          setAdVisible(false);
+          if (containerRef.current) {
+            containerRef.current.style.display = 'none';
           }
         }
-      }, 3000); // Check after 3 seconds
-
-      // Timeout after 5 seconds
-      setTimeout(() => {
-        clearInterval(checkAdSense);
-      }, 5000);
+      }, 1500);
 
       return () => {
-        clearInterval(checkAdSense);
-        clearTimeout(checkAdRendered);
+        if (checkAdRendered) clearTimeout(checkAdRendered);
+        if (timeout) clearTimeout(timeout);
       };
     } catch (err) {
-      console.error('AdSense initialization error:', err);
       setAdVisible(false);
     }
   }, []);
 
-  // Hide completely if no ad visible
+  // Hide completely if no ad visible - return null immediately to prevent any layout shift
   if (!adVisible) {
     return null;
   }
@@ -73,7 +86,9 @@ const AdSenseInline = ({ slot = '', className = '' }: AdSenseInlineProps) => {
       className={`adsense-inline ${className}`}
       style={{
         display: 'block',
-        margin: '0 auto'
+        margin: '0 auto',
+        minHeight: 0,
+        lineHeight: 0
       }}
     >
       <ins
@@ -83,7 +98,9 @@ const AdSenseInline = ({ slot = '', className = '' }: AdSenseInlineProps) => {
           display: 'block', 
           textAlign: 'center',
           width: '100%',
-          minHeight: '0'
+          minHeight: 0,
+          maxHeight: 'none',
+          lineHeight: 0
         }}
         data-ad-client="ca-pub-5650820824993161"
         data-ad-slot={slot}

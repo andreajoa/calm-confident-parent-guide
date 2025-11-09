@@ -4,13 +4,16 @@ interface LazySectionProps {
   children: ReactNode;
   fallback?: ReactNode;
   rootMargin?: string;
+  className?: string;
 }
 
-const LazySection = ({ children, fallback, rootMargin = '100px' }: LazySectionProps) => {
+const LazySection = ({ children, fallback, rootMargin = '200px', className = '' }: LazySectionProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!ref.current) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -18,17 +21,15 @@ const LazySection = ({ children, fallback, rootMargin = '100px' }: LazySectionPr
           observer.disconnect();
         }
       },
-      { rootMargin }
+      { 
+        rootMargin,
+        threshold: 0.01
+      }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    observer.observe(ref.current);
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
       observer.disconnect();
     };
   }, [rootMargin]);
@@ -37,8 +38,22 @@ const LazySection = ({ children, fallback, rootMargin = '100px' }: LazySectionPr
     return <>{children}</>;
   }
 
+  // Return absolutely minimal placeholder with zero visual impact
   return (
-    <div ref={ref} style={{ minHeight: 1 }}>
+    <div 
+      ref={ref} 
+      className={className}
+      style={{ 
+        height: 0,
+        minHeight: 0,
+        margin: 0,
+        padding: 0,
+        overflow: 'hidden',
+        visibility: 'hidden',
+        pointerEvents: 'none'
+      }}
+      aria-hidden="true"
+    >
       {fallback || null}
     </div>
   );

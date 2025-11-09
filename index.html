@@ -29,9 +29,17 @@
     <!-- Favicon -->
     <link rel="icon" href="/lovable-uploads/8c26ae2d-15c5-482e-877a-1839602bd495.png" type="image/png">
     
-    <!-- Google Fonts -->
+    <!-- Preconnect to external domains for better performance (early hints - before fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://eocampaign1.com">
+    <link rel="dns-prefetch" href="https://eocampaign1.com">
+    
+    <!-- Google Fonts - display=swap ensures text remains visible during font load -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
     <!-- Open Graph Meta Tags -->
@@ -102,19 +110,19 @@
           },
           {
             "@type": "UnitPriceSpecification",
-            "price": "19.99",
+            "price": "64.99",
             "priceCurrency": "CAD",
             "valueAddedTaxIncluded": true
           },
           {
             "@type": "UnitPriceSpecification",
-            "price": "11.99",
+            "price": "37.99",
             "priceCurrency": "GBP",
             "valueAddedTaxIncluded": true
           },
           {
             "@type": "UnitPriceSpecification",
-            "price": "21.99",
+            "price": "72.99",
             "priceCurrency": "AUD",
             "valueAddedTaxIncluded": true
           }
@@ -287,25 +295,22 @@
     <meta name="bingbot" content="index,follow,snippet,archive" />
     <meta name="google-site-verification" content="googlef2a7a77b144edac3" />
     
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) - Load asynchronously for better performance -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-14K5EVCMKV"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
-      gtag('config', 'G-14K5EVCMKV');
+      gtag('config', 'G-14K5EVCMKV', {
+        'send_page_view': false
+      });
     </script>
     
-    <script async src="https://eocampaign1.com/form/72fb70c4-663b-11f0-b017-738da375565f.js" data-form="72fb70c4-663b-11f0-b017-738da375565f"></script>
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5650820824993161" crossorigin="anonymous"></script>
+    <!-- Email Octopus - Defer loading -->
+    <script defer src="https://eocampaign1.com/form/72fb70c4-663b-11f0-b017-738da375565f.js" data-form="72fb70c4-663b-11f0-b017-738da375565f"></script>
     
-    <!-- Preconnect to external domains for better performance -->
-    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
-    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
-    <link rel="preconnect" href="https://eocampaign1.com">
-    <link rel="dns-prefetch" href="https://eocampaign1.com">
+    <!-- Google AdSense - Load after page content for better performance -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5650820824993161" crossorigin="anonymous"></script>
   </head>
 
   <body>

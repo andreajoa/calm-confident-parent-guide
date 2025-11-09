@@ -12,6 +12,7 @@ import AdSenseInline from "@/components/AdSenseInline";
 import LivePurchaseNotifications from "@/components/LivePurchaseNotifications";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 import StickyCTAButton from "@/components/StickyCTAButton";
+import SectionBridge from "@/components/SectionBridge";
 
 // Lazy load heavy components for better performance
 const ValueStackSection = lazy(() => import("@/components/ValueStackSection"));
@@ -40,14 +41,35 @@ const Index = () => {
       {/* AdSense Banner - Only render if ad loads, otherwise nothing */}
       <AdSenseBanner format="horizontal" className="w-full" />
       
+      {/* BRIDGE: Hero to Authority */}
+      <SectionBridge 
+        text="Trusted by leading experts and thousands of families worldwide" 
+        variant="social-proof"
+        icon="check"
+      />
+      
       {/* SECTION 3: Authority Proof - Flows directly from Hero */}
       <AuthorityProofSection />
+      
+      {/* BRIDGE: Authority to Problem */}
+      <SectionBridge 
+        text="We understand the daily struggles you face. It's time to stop feeling overwhelmed" 
+        variant="default"
+        icon="arrow"
+      />
       
       {/* SECTION 4: Problem Agitation - Background connects to previous */}
       <ProblemSection />
       
       {/* Author bio for credibility stacking - Background connects */}
       <AuthorSection />
+      
+      {/* BRIDGE: Author to Solution */}
+      <SectionBridge 
+        text="Ready to discover the exact strategies that make a difference? Unlock the complete roadmap now" 
+        variant="benefit"
+        icon="sparkles"
+      />
       
       {/* AdSense Inline - Only if ad loads */}
       <AdSenseInline className="w-full" />
@@ -62,6 +84,13 @@ const Index = () => {
         <ChapterBreakdownSection />
       </Suspense>
       
+      {/* BRIDGE: Chapters to Testimonials */}
+      <SectionBridge 
+        text="Don't just imagine the change – see it in action. Thousands of parents have already transformed their homes" 
+        variant="social-proof"
+        icon="trending"
+      />
+      
       {/* AdSense Inline - Only if ad loads */}
       <AdSenseInline className="w-full" />
       
@@ -75,6 +104,13 @@ const Index = () => {
         <WhoIsThisForSection />
       </Suspense>
       
+      {/* BRIDGE: Who Is This For to FAQ */}
+      <SectionBridge 
+        text="Still have questions? We've got answers. Get clarity on common concerns before you make your decision" 
+        variant="default"
+        icon="check"
+      />
+      
       {/* SECTION 11: FAQ - Load immediately */}
       <Suspense fallback={null}>
         <FAQSection />
@@ -83,15 +119,36 @@ const Index = () => {
       {/* AdSense Inline - Only if ad loads */}
       <AdSenseInline className="w-full" />
       
+      {/* BRIDGE: FAQ to Urgency */}
+      <SectionBridge 
+        text="The choice is yours: continue struggling or embrace a calmer future. This opportunity won't last forever" 
+        variant="urgent"
+        icon="arrow"
+      />
+      
       {/* SECTION 12: Final Urgency - Load immediately */}
       <Suspense fallback={null}>
         <FinalUrgencySection />
       </Suspense>
       
+      {/* BRIDGE: Urgency to Guarantee */}
+      <SectionBridge 
+        text="Your investment is completely protected. Try it today, absolutely risk-free" 
+        variant="benefit"
+        icon="check"
+      />
+      
       {/* SECTION 13: Guarantee Visual - Load immediately */}
       <Suspense fallback={null}>
         <GuaranteeVisualSection />
       </Suspense>
+      
+      {/* BRIDGE: Guarantee to Final CTA */}
+      <SectionBridge 
+        text="The only risk is missing out on a calmer, happier home. Take the first step towards confident parenting now" 
+        variant="benefit"
+        icon="sparkles"
+      />
       
       {/* SECTION 14: Final CTA - Load immediately */}
       <Suspense fallback={null}>
